@@ -92,7 +92,7 @@ export default function Uploader() {
           <h2 className="text-xl font-semibold">Upload an image</h2>
         </div>
         <label
-          htmlFor="image-upload"
+          htmlFor="file-upload"
           className="group relative mt-2 flex h-72 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
         >
           <div
@@ -159,21 +159,24 @@ export default function Uploader() {
             </p>
             <span className="sr-only">Photo upload</span>
           </div>
-          {preview && (
-            // eslint-disable-next-line @next/next/no-img-element -- We want a simple preview here, no <Image> needed
-            <img
-              src={preview}
-              alt="Preview"
-              className="h-full w-full rounded-md object-cover"
-            />
-          )}
+          {preview && file?.type.startsWith('image') ? (
+              <img
+                src={preview}
+                alt="Preview"
+                className="h-full w-full rounded-md object-cover"
+              />
+            ) : file ? (
+              <div className="flex flex-col items-center justify-center h-full">
+                <p className="text-sm text-gray-600">{file.name}</p>
+              </div>
+            ) : null}
         </label>
         <div className="mt-1 flex rounded-md shadow-sm">
           <input
-            id="image-upload"
-            name="image"
+            id="file-upload"
+            name="file"
             type="file"
-            accept="image/*"
+            //accept="image/*"
             className="sr-only"
             onChange={(event) => {
               const file = event.currentTarget?.files?.[0]
