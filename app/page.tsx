@@ -37,6 +37,7 @@ export default function Home() {
         </Link>
         .
       </p>
+
       <div className="sm:absolute sm:bottom-0 w-full px-20 py-10 flex justify-between">
         <Link href="https://vercel.com">
           <Image
@@ -62,5 +63,5 @@ export default function Home() {
         </Link>
       </div>
     </main>
-  )
+  );
 }
