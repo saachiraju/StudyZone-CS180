@@ -1,0 +1,26 @@
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: lightgray;
+    padding: 10px;
+  }
+  
+.boxmodule {
+    width: 200px;
+    height: 200px;
+    background-color: cornflowerblue;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.boxcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left; /* Centers boxes horizontally */
+    gap: 20px; /* spacing between boxes */
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  

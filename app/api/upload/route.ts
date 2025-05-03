@@ -16,7 +16,13 @@ export async function POST(request: Request): Promise<NextResponse> {
           // ⚠️ Authenticate and authorize users before generating the token.
           // Otherwise, you're allowing anonymous uploads.
           return {
-            allowedContentTypes: ['image/*', 'UTType/*', 'application/pdf', 'text/*'],
+            allowedContentTypes: ['image/*', 
+            'UTType/*', 
+            'application/pdf', 
+            'text/*',
+            'application/octet-stream',
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
             addRandomSuffix: true,
             maximumSizeInBytes: 50 * 1024 * 1024, // 50MB
           }
