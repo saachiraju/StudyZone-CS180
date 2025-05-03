@@ -91,6 +91,13 @@ export default function Uploader() {
         <div className="space-y-1 mb-4">
           <h2 className="text-xl font-semibold">Upload an image</h2>
         </div>
+        <div className="flex gap-2 mb-4">
+        <input
+          type="text"
+          placeholder="Enter image name (e.g. CS135 Lecture 3 ppt)"
+          className="border p-2 rounded w-full"
+        />
+      </div>
         <label
           htmlFor="file-upload"
           className="group relative mt-2 flex h-72 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
