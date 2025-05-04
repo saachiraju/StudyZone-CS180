@@ -5,12 +5,15 @@ import toast from 'react-hot-toast'
 import { upload } from '@vercel/blob/client'
 import ProgressBar from './progress-bar'
 
+
+
 export default function Uploader() {
   const [preview, setPreview] = useState<string | null>(null)
   const [file, setFile] = useState<File | null>(null)
   const [dragActive, setDragActive] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [imageName, setImageName] = useState('')
 
   function reset() {
     setIsUploading(false)
@@ -24,8 +27,10 @@ export default function Uploader() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setIsUploading(true)
-
+  
     if (file) {
+      let uploadedBlob
+  
       try {
         const blob = await upload(file.name, file, {
           access: 'public',
@@ -34,7 +39,8 @@ export default function Uploader() {
             setProgress(progressEvent.percentage)
           },
         })
-
+        uploadedBlob = blob // ✅ store blob here for use later
+  
         toast(
           (t: { id: string }) => (
             <div className="relative">
@@ -62,11 +68,26 @@ export default function Uploader() {
         } else {
           throw error
         }
+        setIsUploading(false)
+        return
       }
-
+  
+      // ✅ Use imageName from useState and uploadedBlob
+      await fetch('/api/log-upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: imageName,
+          url: uploadedBlob.url,
+        }),
+      })
+  
       reset()
     }
   }
+  
 
   function handleFileChange(file: File) {
     toast.dismiss()
@@ -89,13 +110,15 @@ export default function Uploader() {
     <form className="grid gap-6" onSubmit={handleSubmit}>
       <div>
         <div className="space-y-1 mb-4">
-          <h2 className="text-xl font-semibold">Upload an image</h2>
+          <h2 className="text-xl font-semibold">Upload a file</h2>
         </div>
         <div className="flex gap-2 mb-4">
         <input
           type="text"
           placeholder="Enter image name (e.g. CS135 Lecture 3 ppt)"
           className="border p-2 rounded w-full"
+          value={imageName}
+          onChange={(e) => setImageName(e.target.value)}
         />
       </div>
         <label
