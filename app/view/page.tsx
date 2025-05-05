@@ -14,20 +14,16 @@ export default function Home() {
   const [images, setImages] = useState<ImageEntry[]>([]);
 
   useEffect(() => {
-    fetch('/imagelinks.txt')
-      .then((res) => res.text())
-      .then((text) => {
-        const parsed = text
-          .split('\n')
-          .map((line) => line.trim())
-          .filter(Boolean)
-          .map((line) => {
-            const [label, url] = line.split(',').map(part => part.trim());
-            return { label, url };
-          });
+    fetch('/api/blobs') // calling your serverless function
+      .then((res) => res.json())
+      .then((data) => {
+        const parsed = data.urls.map((url: string, i: number) => ({
+          label: `Image ${i + 1}`,
+          url,
+        }));
         setImages(parsed);
       })
-      .catch((err) => console.error('Failed to load image links:', err));
+      .catch((err) => console.error('Failed to load blob links:', err));
   }, []);
 
   return (

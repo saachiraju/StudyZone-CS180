@@ -1,5 +1,6 @@
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client'
 import { NextResponse } from 'next/server'
+import { list } from '@vercel/blob';
 
 export async function POST(request: Request): Promise<NextResponse> {
   const body = (await request.json()) as HandleUploadBody
@@ -41,5 +42,26 @@ export async function POST(request: Request): Promise<NextResponse> {
       { error: (error as Error).message },
       { status: 400 } // The webhook will retry 5 times waiting for a 200
     )
+  }
+}
+
+
+async function getBlobLinks() {
+  const { blobs } = await list(); // Optionally: list({ prefix: 'your/path' });
+  const urls = blobs.map(blob => blob.url);
+  console.log(urls);
+  return urls;
+}
+
+export async function GET(): Promise<NextResponse> {
+  try {
+    const { blobs } = await list(); // Optional: list({ prefix: 'your/path' });
+    const urls = blobs.map(blob => blob.url);
+    return NextResponse.json({ urls });
+  } catch (error) {
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 }
+    );
   }
 }
