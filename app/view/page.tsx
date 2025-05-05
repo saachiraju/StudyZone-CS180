@@ -18,7 +18,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         const parsed = data.urls.map((url: string, i: number) => ({
-          label: `Image ${i + 1}`,
+          label: url.substring(56, url.lastIndexOf('.') - 31).replaceAll('%', " ").replaceAll('-', ' '),
           url,
         }));
         setImages(parsed);
@@ -33,26 +33,55 @@ export default function Home() {
       </h1>
 
       <div className="boxcontainer">
-        {images.map((img, index) => (
-          <div key={index} className="boxmodule">
-            {img.label}
-            <Link href={img.url}>
-              <Image
-                src={img.url}
-                alt={img.label}
-                width={100}
-                height={80}
-                className="image"
-                style={{
-                  objectFit: 'cover',
-                  width: '100%',
-                  height: '85%',
-                }}
-              />
-            </Link>
-          </div>
-        ))}
+  {images.map((img, index) => {
+    const fileExtension = img.url.split('.').pop()?.toLowerCase() || '';
+    const isPdf = fileExtension === 'pdf';
+    const isPpt = fileExtension === 'ppt' || fileExtension === 'pptx';
+
+    // Default images for file types
+    const fallbackImage =
+    fileExtension === 'pdf'
+    ? '/pdf-icon.png'
+    : fileExtension === 'ppt' || fileExtension === 'pptx'
+    ? '/ppt-icon.png'
+    : fileExtension === 'docx' || fileExtension === 'doc'
+    ? '/doc-icon.png'
+    : fileExtension === 'txt'
+    ? '/txt-icon.png'
+    : img.url;
+
+    return (
+      <div key={index} className="boxmodule">
+        <div className="label">{img.label}</div>
+        <Link href={img.url} target="_blank">
+          <Image
+            src={fallbackImage}
+            alt={img.label || 'File'}
+            width={100}
+            height={80}
+            className="image"
+            style={{
+              objectFit: 'cover',
+              width: fileExtension === 'pdf' || fileExtension === 'ppt' || fileExtension === 'docx' || fileExtension === 'txt' || fileExtension === 'pptx' || fileExtension === 'docx'
+                ? '80%' // shrink default icons
+                : '100%',
+              height: fileExtension === 'pdf' || fileExtension === 'ppt' || fileExtension === 'docx' || fileExtension === 'txt' || fileExtension === 'pptx' || fileExtension === 'docx'
+                ? '80%' // shrink default icons
+                : '85%',
+
+              margin: '0 auto', // center if width is less than 100%
+            }}
+          />
+        </Link>
       </div>
+    );
+  })}
+</div>
+
+<a href="https://www.flaticon.com/free-icons/doc" title="doc icons">Doc icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/pdf" title="pdf icons">Pdf icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/txt" title="txt icons">Txt icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ppt" title="ppt icons">Ppt icons created by Freepik - Flaticon</a>
     </main>
   );
 }

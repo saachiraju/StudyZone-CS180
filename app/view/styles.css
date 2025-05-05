@@ -8,7 +8,7 @@
 .boxmodule {
     width: 200px;
     height: 200px;
-    background-color: burlywood;
+    background-color: #ff94fb;
     padding: 10px;
     box-sizing: border-box;
     overflow: hidden;
@@ -24,3 +24,10 @@
     padding-right: 40px;
   }
   
+  .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+  }
