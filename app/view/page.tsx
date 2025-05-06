@@ -35,10 +35,7 @@ export default function Home() {
       <div className="boxcontainer">
   {images.map((img, index) => {
     const fileExtension = img.url.split('.').pop()?.toLowerCase() || '';
-    const isPdf = fileExtension === 'pdf';
-    const isPpt = fileExtension === 'ppt' || fileExtension === 'pptx';
 
-    // Default images for file types
     const fallbackImage =
     fileExtension === 'pdf'
     ? '/pdf-icon.png'
@@ -63,13 +60,13 @@ export default function Home() {
             style={{
               objectFit: 'cover',
               width: fileExtension === 'pdf' || fileExtension === 'ppt' || fileExtension === 'docx' || fileExtension === 'txt' || fileExtension === 'pptx' || fileExtension === 'docx'
-                ? '80%' // shrink default icons
+                ? '80%'
                 : '100%',
               height: fileExtension === 'pdf' || fileExtension === 'ppt' || fileExtension === 'docx' || fileExtension === 'txt' || fileExtension === 'pptx' || fileExtension === 'docx'
-                ? '80%' // shrink default icons
+                ? '80%'
                 : '85%',
 
-              margin: '0 auto', // center if width is less than 100%
+              margin: '0 auto',
             }}
           />
         </Link>

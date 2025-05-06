@@ -3,7 +3,7 @@ import { list } from '@vercel/blob';
 
 export async function GET(): Promise<NextResponse> {
   try {
-    const { blobs } = await list(); // Optional: list({ prefix: 'your/path' });
+    const { blobs } = await list();
     const urls = blobs.map(blob => blob.url);
     return NextResponse.json({ urls });
   } catch (error) {
