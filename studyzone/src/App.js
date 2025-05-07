@@ -6,11 +6,11 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
+import CollegeRatingsPage from './components/CollegeRatingsPage';
 import ClassPage from './pages/classpages/ClassPage';        
 import ClassPageBCOE from './pages/classpages/ClassPageBCOE'; 
 import RateCoursePage from './pages/RateCoursePage';
 import CourseChatPage from './pages/CourseChatPage';
-
 
 function App() {
   return (
@@ -81,6 +81,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+              <Route 
+                  path="/college/:collegeId/ratings"
+                  element={
+                    <ProtectedRoute>
+                      <Layout>
+                        <CollegeRatingsPage />
+                      </Layout>
+                    </ProtectedRoute>
+                  }
+                />
           <Route
             path="/chat/:courseId"
             element={
@@ -91,8 +101,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-
         </Routes>
       </Router>
     </AuthProvider>
