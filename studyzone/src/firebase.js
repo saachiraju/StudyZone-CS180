@@ -2,15 +2,12 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getDocs, query, collection, where } from "firebase/firestore";
 // Import Firestore functions
 import {
   getFirestore,
-  collection,
   doc,
   setDoc,
-  getDocs,
-  query,
-  where
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -49,15 +46,18 @@ const submitRating = async (collegeId, classCode, userId, rating, comment) => {
 
 // Get all ratings for a class
 const getRatings = async (collegeId, classCode) => {
-  const q = query(
-    collection(db, "ratings"),
-    where("collegeId", "==", collegeId),
-    where("classCode", "==", classCode)
-  );
+  const baseQuery = [
+    where("collegeId", "==", collegeId)
+  ];
+
+  if (classCode) {
+    baseQuery.push(where("classCode", "==", classCode));
+  }
+
+  const q = query(collection(db, "ratings"), ...baseQuery);
   const snapshot = await getDocs(q);
   return snapshot.docs.map(doc => doc.data());
 };
-
 export { auth, googleProvider, submitRating, getRatings };
 export default app;
 
