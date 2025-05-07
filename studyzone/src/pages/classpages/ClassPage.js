@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 
+
 function ClassPage() {
   const { courseId } = useParams();
   
