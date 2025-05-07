@@ -1,11 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
-
 
 function ClassPage() {
   const { courseId } = useParams();
   
-
   const courseResources = {
     // Biology
     BIOL100: { description: "Introduction to Biology: Covers cell structure, genetics, evolution, and basic physiology." },
@@ -102,18 +99,15 @@ function ClassPage() {
       </Link>
     </div>
 
-    {/* 💬 Discord Server */}
-    <div className="section">
-      <h3 className="section-heading">💬 Join This Quarter’s Discord</h3>
-      <a
-        href={`https://discord.com/invite/your-server-id`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="blue-button"
-      >
-        Join Discord
-      </a>
-    </div>
+{/* 💬 Class ChatBot */}
+<div className="section">
+  <h3 className="section-heading">💬 Class Live Chat</h3>
+  <Link to={`/chat/${courseId}`} className="blue-button">
+    Open Class Chat
+  </Link>
+</div>
+
+
 
     {/* 📚 Course Resources */}
     <div className="section">

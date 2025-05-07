@@ -10,6 +10,7 @@ import ClassPage from './pages/classpages/ClassPage';
 import RateCoursePage from './pages/RateCoursePage';
 import CS180 from './pages/cs180';
 import CS153 from './pages/cs153';
+import CourseChatPage from './pages/CourseChatPage';
 
 
 function App() {
@@ -85,6 +86,17 @@ function App() {
               <Layout>
                 <RateCoursePage />
               </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/chat/:courseId"
+          element={
+           <ProtectedRoute>
+            <Layout>
+              <CourseChatPage />
+            </Layout>
             </ProtectedRoute>
           }
         />
