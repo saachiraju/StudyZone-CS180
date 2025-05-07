@@ -6,6 +6,8 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
+import CS180 from './pages/cs180';
+import CS153 from './pages/cs153';
 
 function App() {
   return (
@@ -13,35 +15,55 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route 
-            path="/nav" 
+          <Route
+            path="/nav"
             element={
               <ProtectedRoute>
                 <Layout>
                   <Nav />
                 </Layout>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/bcoe" 
+          <Route
+            path="/bcoe"
             element={
               <ProtectedRoute>
                 <Layout>
                   <BCOE />
                 </Layout>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/cnas" 
+          <Route
+            path="/bcoe/cs180"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CS180 />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bcoe/cs153"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CS153 />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cnas"
             element={
               <ProtectedRoute>
                 <Layout>
                   <CNAS />
                 </Layout>
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
       </Router>
