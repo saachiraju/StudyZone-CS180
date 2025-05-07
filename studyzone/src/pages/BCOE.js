@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+BCOE.js
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Pages.css';
 
@@ -54,53 +56,23 @@ function BCOE() {
   };
 
   return (
-    <div className="page-container">
-      <div className="header-banner">
-        <img
-          src="/bcoe-logo.png"
-          alt="UC Riverside BCOE Logo"
-          className="cnas-logo"
-        />
-        <h1 className="page-title">Bourns College of Engineering</h1>
-        <p className="page-subtitle">
-          Your one‑stop hub for BCOE study resources.
-        </p>
-      </div>
-      <div className="page-content">
-        <input
-          type="text"
-          placeholder="Search classes (e.g., CS153)"
-          className="class-search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+    <div className="page-center">
 
-        {Object.entries(groupedClasses).map(([department, classes]) => {
-          const filtered = classes.filter((course) =>
-            course.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-          if (filtered.length === 0) return null;
+      <div className="card">
+        <h1 className="page-title">Bourns College of Engineering</h1>
 
-          return (
-            <div key={department} className="mb-6">
-              <h2 style={{ fontWeight: 'bold', margin: '20px 0 10px' }}>
-                {department}
-              </h2>
+        <p>Welcome to the BCOE study resources page.</p>
+        <p>Here you'll find resources for engineering students.</p>
 
-              <div className="class-grid">
-                {filtered.map((course) => (
-                  <Link
-                    key={course}
-                    to={`/classpages/bcoe/${course}`}
-                    className="class-card"
-                  >
-                    {course}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+        <h2>Classes</h2>
+        <ul className="class-list">
+          <li>
+            <Link to="/bcoe/cs180">CS180 – Software Engineering</Link>
+          </li>
+          <li>
+            <Link to="/bcoe/cs153">CS153 – Operating Systems</Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
