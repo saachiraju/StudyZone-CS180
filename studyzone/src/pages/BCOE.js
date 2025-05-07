@@ -1,10 +1,17 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Pages.css';
 
 function BCOE() {
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleCollegeChange = (e) => {
+    const selectedCollege = e.target.value;
+    if (selectedCollege) {
+      navigate(`/${selectedCollege.toLowerCase()}`);
+    }
+  };
 
   const groupedClasses = {
     'Computer Science': [
@@ -28,6 +35,14 @@ function BCOE() {
 
   return (
     <div className="page-container">
+      <div className="college-selector">
+        <select onChange={handleCollegeChange} value="BCOE" className="college-dropdown">
+          <option value="" disabled>Select College</option>
+          <option value="BCOE">Bourns College of Engineering</option>
+          <option value="CNAS">College of Natural & Agricultural Sciences</option>
+        </select>
+      </div>
+      
       <div className="header-banner">
         <img
           src="/bcoe-logo.png"
@@ -39,7 +54,7 @@ function BCOE() {
           Your one‑stop hub for BCOE study resources.
         </p>
       </div>
-
+  
       <div className="page-content">
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
@@ -63,6 +78,7 @@ function BCOE() {
           const filtered = classes.filter((course) =>
             course.toLowerCase().includes(searchTerm.toLowerCase())
           );
+
           if (filtered.length === 0) return null;
 
           return (
