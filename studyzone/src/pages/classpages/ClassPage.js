@@ -108,7 +108,6 @@ function ClassPage() {
 </div>
 
 
-
     {/* 📚 Course Resources */}
     <div className="section">
       <h3 className="section-heading">📚 Course Resources</h3>
