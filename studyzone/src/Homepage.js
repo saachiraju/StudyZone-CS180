@@ -1,39 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Homepage.css';
 import { auth, googleProvider } from './firebase';
-import { signInWithPopup, signOut } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect to Nav page if user is already logged in
+    if (currentUser) {
+      navigate('/nav');
+    }
+  }, [currentUser, navigate]);
 
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      // Navigation happens automatically in the useEffect hook after auth state changes
     } catch (error) {
       console.error("Error signing in with Google:", error);
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Error signing out:", error);
     }
   };
 
   return (
     <div className="homepage-container">
       <h1>Welcome to StudyZone</h1>
-      {currentUser ? (
-        <div>
-          <p>Hello, {currentUser.displayName}</p>
-          <button className="login-button" onClick={handleSignOut}>Sign Out</button>
-        </div>
-      ) : (
-        <button className="login-button" onClick={handleGoogleSignIn}>Log In with Google</button>
-      )}
+      <button className="login-button" onClick={handleGoogleSignIn}>
+        Log In with Google
+      </button>
     </div>
   );
 }
