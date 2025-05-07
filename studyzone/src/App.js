@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
+import CollegeRatingsPage from './components/CollegeRatingsPage';
 
 function App() {
   return (
@@ -43,6 +44,17 @@ function App() {
               </ProtectedRoute>
             } 
           />
+              <Route 
+                  path="/college/:collegeId/ratings"
+                  element={
+                    <ProtectedRoute>
+                      <Layout>
+                        <CollegeRatingsPage />
+                      </Layout>
+                    </ProtectedRoute>
+                  }
+                />
+
         </Routes>
       </Router>
     </AuthProvider>
