@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Pages.css';
@@ -44,21 +43,32 @@ function BCOE() {
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
 
-        {/* Always-visible button to go to class ratings */}
-        <Link to="/college/BCOE/ratings">
-          <button style={{ marginTop: "1rem" }}>
+        {/* Search and Button Section (Stacked Layout) */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
+          <input
+            type="text"
+            placeholder="Search classes (e.g., CS153)"
+            className="class-search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              padding: "0.5rem 1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              maxWidth: "400px"
+            }}
+          />
+
+          <Link
+            to="/college/BCOE/ratings"
+            className="class-card"
+            style={{ maxWidth: "fit-content" }}
+          >
             View All BCOE Class Ratings
-          </button>
-        </Link>
+          </Link>
+        </div>
 
-        <input
-          type="text"
-          placeholder="Search classes (e.g., CS153)"
-          className="class-search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
+        {/* Filtered Class Grid by Department */}
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter((course) =>
             course.toLowerCase().includes(searchTerm.toLowerCase())
@@ -91,4 +101,3 @@ function BCOE() {
 }
 
 export default BCOE;
-

@@ -59,15 +59,17 @@ const CollegeRatingsPage = () => {
 
       <button
         style={{
-          position: "absolute",
-          top: "2rem",
-          right: "2rem",
-          padding: "0.5rem 1rem"
+            position: "absolute",
+            top: "5.5rem", // Move it lower (was 2rem)
+            right: "2rem",
+            padding: "0.5rem 1rem",
+            zIndex: 1 // Ensures it's behind/fits well with the profile icon
         }}
         onClick={() => setShowForm(!showForm)}
-      >
+        >
         {showForm ? "Cancel" : "Add Rating"}
-      </button>
+        </button>
+
 
       {showForm && (
         <div style={{ margin: "1rem 0", border: "1px solid #ccc", padding: "1rem", maxWidth: "400px" }}>
