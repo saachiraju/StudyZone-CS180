@@ -7,12 +7,9 @@ import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
 import CollegeRatingsPage from './components/CollegeRatingsPage';
-=======
 import ClassPage from './pages/classpages/ClassPage';        
 import ClassPageBCOE from './pages/classpages/ClassPageBCOE'; 
 import RateCoursePage from './pages/RateCoursePage';
-import CS180 from './pages/cs180';
-import CS153 from './pages/cs153';
 import CourseChatPage from './pages/CourseChatPage';
 
 function App() {
@@ -94,7 +91,16 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-
+          <Route
+            path="/chat/:courseId"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CourseChatPage/>
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
