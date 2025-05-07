@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 function ClassPage() {
   const { courseId } = useParams();
   
-
   const courseResources = {
     // Biology
     BIOL100: { description: "Introduction to Biology: Covers cell structure, genetics, evolution, and basic physiology." },
@@ -97,6 +96,14 @@ function ClassPage() {
       <h3 className="section-heading">⭐ Rate My Course</h3>
       <Link to={`/rate/${courseId}`} className="blue-button">
         Rate This Course
+      </Link>
+    </div>
+
+    {/* 💬 Class ChatBot */}
+    <div className="section">
+      <h3 className="section-heading">💬 Class Live Chat</h3>
+      <Link to={`/chat/${courseId}`} className="blue-button">
+        Open Class Chat
       </Link>
     </div>
 
