@@ -1,6 +1,4 @@
 import { Link, useParams } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
-
 
 function ClassPage() {
   const { courseId } = useParams();
@@ -104,7 +102,7 @@ function ClassPage() {
 
     {/* 💬 Discord Server */}
     <div className="section">
-      <h3 className="section-heading">💬 Join This Quarter’s Discord</h3>
+      <h3 className="section-heading">💬 Join This Quarter's Discord</h3>
       <a
         href={`https://discord.com/invite/your-server-id`}
         target="_blank"

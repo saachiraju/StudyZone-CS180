@@ -1,5 +1,3 @@
-
-BCOE.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Pages.css';  
@@ -7,7 +5,6 @@ import '../styles/Pages.css';
 export default function BCOE() {
   return (
     <div className="page-center">
-
       <div className="card">
         <h1 className="page-title">Bourns College of Engineering</h1>
 
