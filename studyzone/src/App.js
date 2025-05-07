@@ -6,11 +6,9 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
-import ClassPage from './pages/classpages/ClassPage';
+import ClassPage from './pages/classpages/ClassPage';        
+import ClassPageBCOE from './pages/classpages/ClassPageBCOE'; 
 import RateCoursePage from './pages/RateCoursePage';
-import CS180 from './pages/cs180';
-import CS153 from './pages/cs153';
-
 
 function App() {
   return (
@@ -18,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
+
           <Route
             path="/nav"
             element={
@@ -39,26 +38,6 @@ function App() {
             }
           />
           <Route
-            path="/bcoe/cs180"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <CS180 />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/bcoe/cs153"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <CS153 />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/cnas"
             element={
               <ProtectedRoute>
@@ -68,31 +47,38 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route 
-            path="/classpages/:courseId" 
+          <Route
+            path="/classpages/:courseId"
             element={
               <ProtectedRoute>
                 <Layout>
-                  < ClassPage />
+                  <ClassPage />
                 </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/rate/:courseId"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <RateCoursePage />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-          
+              </ProtectedRoute>
+            }
+          />
 
+          <Route
+            path="/classpages/bcoe/:courseId"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ClassPageBCOE />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
 
-
-
+          <Route
+            path="/rate/:courseId"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <RateCoursePage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
