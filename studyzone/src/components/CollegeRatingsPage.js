@@ -114,18 +114,47 @@ const CollegeRatingsPage = () => {
         Object.entries(groupedRatings).map(([classCode, ratings]) => (
           <div key={classCode} style={{ marginBottom: "2rem" }}>
             <h2>{classCode}</h2>
-            <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
+            <table style={{
+              width: "100%",
+              tableLayout: "fixed",
+              borderCollapse: "collapse",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+              marginTop: "1rem",
+              fontFamily: "Arial, sans-serif"
+            }}>
               <thead>
-                <tr>
-                  <th>Rating</th>
-                  <th>Comment</th>
+                <tr style={{ backgroundColor: "#f4f4f4" }}>
+                  <th style={{
+                    width: "20%",
+                    padding: "12px",
+                    borderBottom: "1px solid #ddd",
+                    textAlign: "center"
+                  }}>Rating</th>
+                  <th style={{
+                    width: "80%",
+                    padding: "12px",
+                    borderBottom: "1px solid #ddd",
+                    textAlign: "left"
+                  }}>Comment</th>
                 </tr>
               </thead>
               <tbody>
                 {ratings.map((r, i) => (
-                  <tr key={i}>
-                    <td style={{ textAlign: "center" }}>{r.rating}/5</td>
-                    <td>{r.comment || "—"}</td>
+                  <tr key={i} style={{ backgroundColor: i % 2 === 0 ? "#fff" : "#f9f9f9" }}>
+                    <td style={{
+                      padding: "12px",
+                      borderBottom: "1px solid #eee",
+                      textAlign: "center",
+                      fontWeight: "bold"
+                    }}>
+                      {r.rating}/5
+                    </td>
+                    <td style={{
+                      padding: "12px",
+                      borderBottom: "1px solid #eee"
+                    }}>
+                      {r.comment || "—"}
+                    </td>
                   </tr>
                 ))}
               </tbody>
