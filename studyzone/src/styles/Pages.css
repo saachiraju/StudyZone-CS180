@@ -1,3 +1,4 @@
+
 .page-container {
   padding: 80px 20px 20px;
   min-height: 100vh;
@@ -182,3 +183,45 @@
 .blue-button:hover {
   background-color: #002f7a;
 }
+
+.page-center {
+  display: flex;
+  justify-content: center;  
+  padding-top: 4rem;    
+}
+
+.card {
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.page-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.class-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.class-list li {
+  margin: 0.75rem 0;
+}
+
+.class-list a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #1976d2;            
+}
+
+.class-list a:hover {
+  text-decoration: underline;
+}
+
