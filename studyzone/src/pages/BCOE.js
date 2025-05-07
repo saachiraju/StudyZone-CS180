@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Pages.css';
@@ -44,13 +43,7 @@ function BCOE() {
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
 
-        {/* Always-visible button to go to class ratings */}
-        <Link to="/college/BCOE/ratings">
-          <button style={{ marginTop: "1rem" }}>
-            View All BCOE Class Ratings
-          </button>
-        </Link>
-
+        {/* Search input */}
         <input
           type="text"
           placeholder="Search classes (e.g., CS153)"
@@ -58,6 +51,15 @@ function BCOE() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+
+        {/* Button moved below input */}
+        <div style={{ marginTop: "1rem" }}>
+          <Link to="/college/BCOE/ratings">
+            <button className="class-card">
+              View All BCOE Class Ratings
+            </button>
+          </Link>
+        </div>
 
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter((course) =>
@@ -91,4 +93,3 @@ function BCOE() {
 }
 
 export default BCOE;
-

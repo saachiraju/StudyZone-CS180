@@ -2,6 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRatings, submitRating } from "../firebase";
 import { useAuth } from "../AuthContext";
+import "../styles/Pages.css"; // Make sure this includes .class-card
+
+// Dummy profile icon (replace with actual component if needed)
+const ProfileIcon = () => (
+  <div style={{
+    backgroundColor: "#007bff",
+    color: "white",
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "bold",
+    fontSize: "18px"
+  }}>
+    S
+  </div>
+);
 
 const CollegeRatingsPage = () => {
   const { collegeId } = useParams();
@@ -57,17 +76,25 @@ const CollegeRatingsPage = () => {
     <div style={{ padding: "2rem", position: "relative" }}>
       <h1>All Class Ratings in {collegeId}</h1>
 
-      <button
-        style={{
-          position: "absolute",
-          top: "2rem",
-          right: "2rem",
-          padding: "0.5rem 1rem"
-        }}
-        onClick={() => setShowForm(!showForm)}
-      >
-        {showForm ? "Cancel" : "Add Rating"}
-      </button>
+      {/* Profile and Add Rating */}
+      <div style={{
+        position: "absolute",
+        top: "1rem",
+        right: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        gap: "1rem"
+      }}>
+        <ProfileIcon />
+        <button
+          className="class-card"
+          style={{ marginTop: "1.5rem" }}
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? "Cancel" : "Add Rating"}
+        </button>
+      </div>
 
       {showForm && (
         <div style={{ margin: "1rem 0", border: "1px solid #ccc", padding: "1rem", maxWidth: "400px" }}>
