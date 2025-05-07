@@ -6,6 +6,8 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
+import ClassPage from './pages/classpages/ClassPage';
+import RateCoursePage from './pages/RateCoursePage';
 
 function App() {
   return (
@@ -43,6 +45,31 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route 
+            path="/classpages/:courseId" 
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  < ClassPage />
+                </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rate/:courseId"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <RateCoursePage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+          
+
+
+
+
         </Routes>
       </Router>
     </AuthProvider>
