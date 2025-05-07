@@ -3,6 +3,9 @@ import Homepage from './Homepage';
 import Nav from './Nav';
 import { AuthProvider } from './AuthContext';
 import ProtectedRoute from './ProtectedRoute';
+import Layout from './components/Layout';
+import BCOE from './pages/BCOE';
+import CNAS from './pages/CNAS';
 
 function App() {
   return (
@@ -14,7 +17,29 @@ function App() {
             path="/nav" 
             element={
               <ProtectedRoute>
-                <Nav />
+                <Layout>
+                  <Nav />
+                </Layout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/bcoe" 
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <BCOE />
+                </Layout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/cnas" 
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CNAS />
+                </Layout>
               </ProtectedRoute>
             } 
           />
