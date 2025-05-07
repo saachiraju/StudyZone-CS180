@@ -1,31 +1,36 @@
 import React from 'react';
 import './Nav.css';
 import { useAuth } from './AuthContext';
-import { signOut } from 'firebase/auth';
-import { auth } from './firebase';
 import { useNavigate } from 'react-router-dom';
 
 function Nav() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      navigate('/');
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
+  const navigateToBCOE = () => {
+    navigate('/bcoe');
+  };
+
+  const navigateToCNAS = () => {
+    navigate('/cnas');
   };
 
   return (
     <div className="nav-container">
       <h1>StudyZone Navigation</h1>
       {currentUser && (
-        <div>
-          <p>Welcome, {currentUser.displayName}!</p>
-          <p>You are now logged in.</p>
-          <button onClick={handleSignOut}>Sign Out</button>
+        <div className="nav-content">
+          <p className="welcome-message">Welcome, {currentUser.displayName}!</p>
+          <p>Select a college to find study resources:</p>
+          
+          <div className="button-container">
+            <button className="college-button bcoe-button" onClick={navigateToBCOE}>
+              BCOE
+            </button>
+            <button className="college-button cnas-button" onClick={navigateToCNAS}>
+              CNAS
+            </button>
+          </div>
         </div>
       )}
     </div>
