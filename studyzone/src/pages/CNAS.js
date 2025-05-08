@@ -34,6 +34,9 @@ function CNAS() {
       </div>
 
       <div className="page-content">
+        <p>Welcome to the CNAS study resources page.</p>
+        <p>Here you'll find resources for science and agricultural students.</p>
+
         <input
           type="text"
           placeholder="Search classes (e.g., CHEM001)"
@@ -50,36 +53,6 @@ function CNAS() {
             </button>
           </Link>
         </div>
-      <div className="college-selector">
-        <select onChange={handleCollegeChange} value="CNAS" className="college-dropdown">
-          <option value="" disabled>Select College</option>
-          <option value="BCOE">Bourns College of Engineering</option>
-          <option value="CNAS">College of Natural & Agricultural Sciences</option>
-        </select>
-      </div>
-      
-      <div className="header-banner">
-        <img
-          src="/cnas-logo.png"
-          alt="UC Riverside CNAS Logo"
-          className="cnas-logo"
-        />
-        <h1 className="page-title">College of Natural & Agricultural Sciences</h1>
-        <p className="page-subtitle">Your one-stop hub for CNAS study resources.</p>
-      </div>
-    
-      <div className="page-content">
-        <p>Welcome to the CNAS study resources page.</p>
-        <p>Here you'll find resources for science and agricultural students.</p>
-
-
-        <input
-          type="text"
-          placeholder="Search classes (e.g., CHEM001)"
-          className="class-search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
 
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter(course =>
@@ -107,3 +80,4 @@ function CNAS() {
 }
 
 export default CNAS;
+
