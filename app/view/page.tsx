@@ -12,9 +12,9 @@ type ImageEntry = {
 
 export default function Home() {
   const [images, setImages] = useState<ImageEntry[]>([]);
-
+  let courseId = "CS010A";
   useEffect(() => {
-    fetch('/api/blobs') // calling your serverless function
+    fetch(`/api/blobs?folder=${courseId}`) // calling your serverless function
       .then((res) => res.json())
       .then((data) => {
         const parsed = data.urls.map((url: string, i: number) => ({
@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-        StudyZone Demo
+        {courseId} Resources
       </h1>
 
       <div className="boxcontainer">

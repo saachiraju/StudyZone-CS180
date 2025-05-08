@@ -32,13 +32,14 @@ export default function Uploader() {
       let uploadedBlob
   
       try {
-        const blob = await upload(file.name, file, {
-          access: 'public',
-          handleUploadUrl: '/api/upload',
-          onUploadProgress: (progressEvent) => {
-            setProgress(progressEvent.percentage)
-          },
-        })
+        const blob = await upload(`CS010A/${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        onUploadProgress: (progressEvent) => {
+          setProgress(progressEvent.percentage)
+        },
+      })
+
         uploadedBlob = blob // ✅ store blob here for use later
   
         toast(
