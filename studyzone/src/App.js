@@ -51,7 +51,7 @@ function App() {
             }
           />
           <Route
-            path="/classpages/:courseId"
+            path="/classpages/cnas/:courseId"
             element={
               <ProtectedRoute>
                 <Layout>
