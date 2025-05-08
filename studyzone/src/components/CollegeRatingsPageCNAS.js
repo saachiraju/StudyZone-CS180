@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getRatings, submitRating } from "../firebase";
 import { useAuth } from "../AuthContext";
 import "../styles/Pages.css"; // if using class-card
@@ -78,28 +79,52 @@ const CollegeRatingsPageCNAS = () => {
       minHeight: "100vh"
     }}>
       <div style={{
-        backgroundColor: "#0047ab", // UCR blue
+        backgroundColor: "#0047ab",
         padding: "1.5rem",
         borderRadius: "8px",
         color: "white",
         marginBottom: "2rem",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        position: "relative",
         display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "center"
       }}>
+        {/* Back to Hub Button */}
+        <Link 
+          to="/cnas"
+          style={{
+            position: "absolute",
+            left: 24,
+            backgroundColor: "white",
+            color: "#0047ab",
+            border: "none",
+            borderRadius: "6px",
+            padding: "0.5rem 1rem",
+            fontSize: "0.9rem",
+            fontWeight: "600",
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)"
+          }}
+        >
+          <span style={{ fontSize: "1.1rem", marginRight: "0.3rem" }}>←</span> Back to Hub
+        </Link>
+        {/* Title */}
         <h1 style={{ 
           textAlign: "center", 
           margin: 0,
           fontSize: "2.2rem",
-          fontWeight: "600",
-          flex: "1"
+          fontWeight: "600"
         }}>
           All Class Ratings in {collegeId}
         </h1>
-        
+        {/* Add Rating Button */}
         <button
           style={{ 
+            position: "absolute",
+            right: 24,
             backgroundColor: "white",
             color: "#0047ab",
             border: "none",
