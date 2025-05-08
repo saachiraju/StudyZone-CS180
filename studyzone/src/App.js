@@ -11,6 +11,7 @@ import ClassPage from './pages/classpages/ClassPage';
 import ClassPageBCOE from './pages/classpages/ClassPageBCOE'; 
 import RateCoursePage from './pages/RateCoursePage';
 import CourseChatPage from './pages/CourseChatPage';
+import CollegeRatingsPageCNAS from './components/CollegeRatingsPageCNAS';
 
 function App() {
   return (
@@ -101,6 +102,17 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route 
+            path="/college/CNAS/ratings"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CollegeRatingsPageCNAS />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
         </Routes>
       </Router>
     </AuthProvider>
