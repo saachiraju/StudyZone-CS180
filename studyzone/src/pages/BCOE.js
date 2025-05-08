@@ -59,25 +59,6 @@ function BCOE() {
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
 
-        {/* Search input */}
-        <input
-          type="text"
-          placeholder="Search classes (e.g., CS153)"
-          className="class-search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-        {/* Button moved below input */}
-        <div style={{ marginTop: "1rem" }}>
-          <Link to="/college/BCOE/ratings">
-            <button className="class-card">
-              View All BCOE Class Ratings
-            </button>
-          </Link>
-        </div>
-
-
         {/* Search and Button Section (Stacked Layout) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
           <input
@@ -102,6 +83,7 @@ function BCOE() {
             View All BCOE Class Ratings
           </Link>
         </div>
+
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter((course) =>
             course.toLowerCase().includes(searchTerm.toLowerCase())
