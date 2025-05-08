@@ -34,9 +34,9 @@ function CNAS() {
       </div>
 
       <div className="page-content">
+
         <p>Welcome to the CNAS study resources page.</p>
         <p>Here you'll find resources for science and agricultural students.</p>
-
         <input
           type="text"
           placeholder="Search classes (e.g., CHEM001)"
