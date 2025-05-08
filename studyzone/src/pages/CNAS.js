@@ -23,24 +23,33 @@ function CNAS() {
 
   return (
     <div className="page-container">
-    <div className="header-banner">
-      <img
-        src="/cnas-logo.png"
-        alt="UC Riverside CNAS Logo"
-        className="cnas-logo"
-      />
-      <h1 className="page-title">College of Natural & Agricultural Sciences</h1>
-      <p className="page-subtitle">Your one-stop hub for CNAS study resources.</p>
-    </div>
-  
-    <div className="page-content">
-      <input
-        type="text"
-        placeholder="Search classes (e.g., CHEM001)"
-        className="class-search"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div className="header-banner">
+        <img
+          src="/cnas-logo.png"
+          alt="UC Riverside CNAS Logo"
+          className="cnas-logo"
+        />
+        <h1 className="page-title">College of Natural & Agricultural Sciences</h1>
+        <p className="page-subtitle">Your one-stop hub for CNAS study resources.</p>
+      </div>
+
+      <div className="page-content">
+        <input
+          type="text"
+          placeholder="Search classes (e.g., CHEM001)"
+          className="class-search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        {/* View All CNAS Class Ratings Button */}
+        <div style={{ marginTop: "1rem" }}>
+          <Link to="/college/CNAS/ratings">
+            <button className="class-card">
+              View All CNAS Class Ratings
+            </button>
+          </Link>
+        </div>
 
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter(course =>
