@@ -1,4 +1,3 @@
-
 import { Link, useParams } from 'react-router-dom';
 
 function ClassPageBCOE() {
@@ -30,15 +29,15 @@ function ClassPageBCOE() {
   
     EE100A: {
       description:
-        'Electronic Circuits I: diodes, BJTs, MOSFETs, biasing, and small‑signal analysis.'
+        'Electronic Circuits I: diodes, BJTs, MOSFETs, biasing, and small‑signal analysis.'
     },
     EE100B: {
       description:
-        'Electronic Circuits II: frequency response, feedback, differential and operational amplifier design.'
+        'Electronic Circuits II: frequency response, feedback, differential and operational amplifier design.'
     },
     EE110A: {
       description:
-        'Signals and Systems I: convolution, continuous‑time Fourier series and transforms, Laplace domain.'
+        'Signals and Systems I: convolution, continuous‑time Fourier series and transforms, Laplace domain.'
     },
     EE132: {
       description:
@@ -94,7 +93,7 @@ function ClassPageBCOE() {
 
   return (
     <div className="page-container course-layout">
-      <h2 className="course-title">{courseId} Resource Page</h2>
+      <h2 className="course-title">{courseId} Resource Page</h2>
 
       {course ? (
         <>
@@ -102,28 +101,28 @@ function ClassPageBCOE() {
 
 
           <div className="section">
-            <h3 className="section-heading">⭐ Rate My Course</h3>
-            <Link to={`/rate/${courseId}`} className="blue-button">
-              Rate This Course
+            <h3 className="section-heading">⭐ Rate My Course</h3>
+            <Link to="/college/BCOE/ratings" className="blue-button">
+              Rate This Course
             </Link>
           </div>
 
 
           <div className="section">
-            <h3 className="section-heading">💬 Join This Quarter’s Discord</h3>
+            <h3 className="section-heading">💬 Join This Quarter's Discord</h3>
             <a
               href="https://discord.com/invite/your-server-id"
               target="_blank"
               rel="noopener noreferrer"
               className="blue-button"
             >
-              Join This Quarter's Discord
+              Join This Quarter's Discord
             </a>
           </div>
 
 
           <div className="section">
-            <h3 className="section-heading">📚 Course Resources</h3>
+            <h3 className="section-heading">📚 Course Resources</h3>
             {course.syllabus ? (
               <a
                 href={course.syllabus}
@@ -131,7 +130,7 @@ function ClassPageBCOE() {
                 rel="noopener noreferrer"
                 className="blue-button"
               >
-                View Syllabus (PDF)
+                View Syllabus (PDF)
               </a>
             ) : (
               <p>No resources added yet.</p>
