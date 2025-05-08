@@ -4,7 +4,10 @@ function ClassPageBCOE() {
   const { courseId } = useParams();
 
   const bcoeCourseResources = {
-
+    CS010A: {
+      description:
+        'Intro to CS for Science, Engineering & Mathematics I: fundamental C++ programming concepts.'
+    },
     CS010A: {
       description:
         'Intro to CS for Science, Engineering & Mathematics I: fundamental C++ programming concepts.'
