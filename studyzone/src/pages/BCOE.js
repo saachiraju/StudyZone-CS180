@@ -115,5 +115,4 @@ function BCOE() {
     </div>
   );
 }
-
-export default BCOE;
+export default BCOE; 
