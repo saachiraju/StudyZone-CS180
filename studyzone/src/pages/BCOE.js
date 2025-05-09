@@ -15,22 +15,16 @@ function BCOE() {
 
   const groupedClasses = {
     'Computer Science': [
-      'CS010A', 'CS010B', 'CS030', 'CS061', 'CS100',
-      'CS141', 'CS153', 'CS161', 'CS166', 'CS171', 'CS180'
+      'CS010A', 'CS010B', 'CS010C', 'CS061', 'CS150',
+      'CS152', 'CS153', 'CS180'
     ],
     'Electrical Engineering': [
-      'EE100A', 'EE100B', 'EE110A', 'EE110B', 'EE120A', 'EE120B',
-      'EE132', 'EE141', 'EE144', 'EE175A'
+      'EE120A', 'EE144', 'EE110A'
     ],
-    'Mechanical Engineering': [
-      'ME010', 'ME018', 'ME104', 'ME114', 'ME118', 'ME132'
+    'Bioengineering': [
+      'BIEN168', 'BIEN140A'
     ],
-    'Chemical & Environmental Engineering': [
-      'CHE100', 'CHE110A', 'CHE110B', 'CHE120A', 'CHE120B',
-      'ENVE100', 'ENVE110', 'ENVE130'
-    ],
-    Bioengineering: ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
-    'General Engineering': ['ENGR001', 'ENGR154']
+    'General Engineering': ['ENGR001', 'ENGR180W']
   };
 
   return (
@@ -58,8 +52,6 @@ function BCOE() {
       <div className="page-content">
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
-
-        {/* Search and Button Section (Stacked Layout) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
           <input
             type="text"
