@@ -22,7 +22,7 @@ const StarRating = ({ rating }) => {
 };
 
 const CollegeRatingsPage = () => {
-  const { collegeId } = useParams();
+  const collegeId = "BCOE";
   const { currentUser, loading } = useAuth();
 
   const [groupedRatings, setGroupedRatings] = useState({});
