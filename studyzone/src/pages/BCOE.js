@@ -19,12 +19,18 @@ function BCOE() {
       'CS152', 'CS153', 'CS180'
     ],
     'Electrical Engineering': [
-      'EE120A', 'EE144', 'EE110A'
+      'EE120A', 'EE100B', 'EE110A', 'EE110B', 'EE120A', 'EE120B',
+      'EE132', 'EE141', 'EE144', 'EE175A'
     ],
-    'Bioengineering': [
-      'BIEN168', 'BIEN140A'
+    'Mechanical Engineering': [
+      'ME010', 'ME018', 'ME104', 'ME114', 'ME118', 'ME132'
     ],
-    'General Engineering': ['ENGR001', 'ENGR180W']
+    'Chemical & Environmental Engineering': [
+      'CHE100', 'CHE110A', 'CHE110B', 'CHE120A', 'CHE120B',
+      'ENVE100', 'ENVE110', 'ENVE130'
+    ],
+    Bioengineering: ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
+    'General Engineering': ['ENGR001', 'ENGR154']
   };
 
   return (
@@ -39,9 +45,9 @@ function BCOE() {
       
       <div className="header-banner">
         <img
-          src="/bcoe-logo.png"
+          src="/bcoe-class.png"
           alt="UC Riverside BCOE Logo"
-          className="cnas-logo"
+          className="bcoe-class"
         />
         <h1 className="page-title">Bourns College of Engineering</h1>
         <p className="page-subtitle">
