@@ -19,18 +19,12 @@ function BCOE() {
       'CS152', 'CS153', 'CS180'
     ],
     'Electrical Engineering': [
-      'EE120A', 'EE100B', 'EE110A', 'EE110B', 'EE120A', 'EE120B',
-      'EE132', 'EE141', 'EE144', 'EE175A'
+      'EE120A', 'EE110A','EE144'
     ],
-    'Mechanical Engineering': [
-      'ME010', 'ME018', 'ME104', 'ME114', 'ME118', 'ME132'
+    'Bioengineering': [
+      'BIEN168', 'BIEN140A'
     ],
-    'Chemical & Environmental Engineering': [
-      'CHE100', 'CHE110A', 'CHE110B', 'CHE120A', 'CHE120B',
-      'ENVE100', 'ENVE110', 'ENVE130'
-    ],
-    Bioengineering: ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
-    'General Engineering': ['ENGR001', 'ENGR154']
+    'General Engineering': ['ENGR001', 'ENGR180W']
   };
 
   return (
