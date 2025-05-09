@@ -21,8 +21,8 @@ const StarRating = ({ rating }) => {
   );
 };
 
-const CollegeRatingsPageBCOE = () => {
-  const collegeId = "BCOE";
+const CollegeRatingsPage = () => {
+  const { collegeId } = useParams();
   const { currentUser, loading } = useAuth();
 
   const [groupedRatings, setGroupedRatings] = useState({});
@@ -353,4 +353,4 @@ const CollegeRatingsPageBCOE = () => {
   );
 };
 
-export default CollegeRatingsPageBCOE;
+export default CollegeRatingsPage;

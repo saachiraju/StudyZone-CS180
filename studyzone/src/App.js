@@ -6,7 +6,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Layout from './components/Layout';
 import BCOE from './pages/BCOE';
 import CNAS from './pages/CNAS';
-import CollegeRatingsPageBCOE from './components/CollegeRatingsPageBCOE';
+import CollegeRatingsPage from './components/CollegeRatingsPage';
 import ClassPage from './pages/classpages/ClassPage';        
 import ClassPageBCOE from './pages/classpages/ClassPageBCOE'; 
 import RateCoursePage from './pages/RateCoursePage';
@@ -82,16 +82,16 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route 
-            path="/college/BCOE/ratings"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <CollegeRatingsPageBCOE />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
+              <Route 
+                  path="/college/:collegeId/ratings"
+                  element={
+                    <ProtectedRoute>
+                      <Layout>
+                        <CollegeRatingsPage />
+                      </Layout>
+                    </ProtectedRoute>
+                  }
+                />
           <Route
             path="/chat/:courseId"
             element={
