@@ -12,6 +12,7 @@ import ClassPageBCOE from './pages/classpages/ClassPageBCOE';
 import RateCoursePage from './pages/RateCoursePage';
 import CourseChatPage from './pages/CourseChatPage';
 import CollegeRatingsPageCNAS from './components/CollegeRatingsPageCNAS';
+import ResourcePage from './pages/classpages/resourcepages/ResourcePage';
 
 function App() {
   return (
@@ -108,6 +109,16 @@ function App() {
               <ProtectedRoute>
                 <Layout>
                   <CollegeRatingsPageCNAS />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route 
+            path="/classpages/bcoe/:courseId/resources"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ResourcePage />
                 </Layout>
               </ProtectedRoute>
             }

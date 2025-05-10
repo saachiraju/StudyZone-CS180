@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+//import Link from 'next/link';
 
 function ClassPageBCOE() {
   const { courseId } = useParams();
@@ -105,18 +106,9 @@ function ClassPageBCOE() {
 
           <div className="section">
             <h3 className="section-heading">📚 Course Resources</h3>
-            {course.syllabus ? (
-              <a
-                href={course.syllabus}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="blue-button"
-              >
-                View Syllabus (PDF)
-              </a>
-            ) : (
-              <p>No resources added yet.</p>
-            )}
+            <Link to={`/classpages/bcoe/${courseId}/resources`} className="blue-button">
+              Resources
+            </Link>
           </div>
         </>
       ) : (

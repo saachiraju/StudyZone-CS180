@@ -10,15 +10,16 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBiTLsjbj2Ba3kw8JBGKxxXw_NK6rU9m5k",
-  authDomain: "studyzone-3b8dd.firebaseapp.com",
-  projectId: "studyzone-3b8dd",
-  storageBucket: "studyzone-3b8dd.firebasestorage.app",
-  messagingSenderId: "166645360860",
-  appId: "1:166645360860:web:c171244748ececdd37ec19",
-  measurementId: "G-39MMQ038BM"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
+console.log("FIREBASE KEY:", process.env.REACT_APP_FIREBASE_API_KEY);
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Analytics but we don't use it directly
