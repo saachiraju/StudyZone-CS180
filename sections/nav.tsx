@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import './nav.css';
+import '@/styles/nav.css';
 import { useAuth } from '@/dependencies/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useRouter } from 'next/navigation'
