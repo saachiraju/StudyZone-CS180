@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import '@/styles/Pages.css';
-
+import { Header } from '@/sections/Header';
 function BCOE() {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
@@ -37,6 +37,8 @@ function BCOE() {
   };
 
   return (
+    <>
+    <Header/>
     <div className="page-container">
       <div className="college-selector">
         <select onChange={handleCollegeChange} defaultValue="BCOE" className="college-dropdown">
@@ -116,6 +118,7 @@ function BCOE() {
         })}
       </div>
     </div>
+    </>
   );
 }
 

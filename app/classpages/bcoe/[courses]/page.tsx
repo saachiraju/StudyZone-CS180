@@ -6,8 +6,9 @@ import React from 'react';
 
 function ClassPageBCOE() {
   const params = useParams();
-  console.log(params)
-  const courseId = params?.courseId?.toString();
+  //console.log(params)
+  const courseId = params?.courses?.toString();
+  //console.log(courseId)
   //console.log(courseId)
   const bcoeCourseResources: Record<string, { description: string; syllabus?: string }> = {
     CS010A: {
