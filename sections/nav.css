@@ -1,0 +1,73 @@
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  .nav-container h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .nav-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .welcome-message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .college-button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 150px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bcoe-button {
+    background-color: #4285f4;
+  }
+  
+  .cnas-button {
+    background-color: #0f9d58;
+  }
+  
+  .college-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .bcoe-button:hover {
+    background-color: #357ae8;
+  }
+  
+  .cnas-button:hover {
+    background-color: #0b8043;
+  } 
