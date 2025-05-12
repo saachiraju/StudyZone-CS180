@@ -6,7 +6,11 @@ import { upload } from '@vercel/blob/client'
 import ProgressBar from './progress-bar'
 import './styles.css'
 
-export default function Uploader() {
+type Props = {
+  folder: string;
+}
+
+export default function Uploader({ folder }: Props) {
   const [preview, setPreview] = useState<string | null>(null)
   const [file, setFile] = useState<File | null>(null)
   const [dragActive, setDragActive] = useState(false)
@@ -31,7 +35,7 @@ export default function Uploader() {
       let uploadedBlob
   
       try {
-        const blob = await upload(`CS010A/${file.name}`, file, {
+        const blob = await upload(`${folder}/${file.name}`, file, {
           access: 'public',
           handleUploadUrl: '/api/upload',
           onUploadProgress: (progressEvent) => {
@@ -109,7 +113,7 @@ export default function Uploader() {
           htmlFor="file-upload"
           className="group relative flex h-96 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
           style={{ height: '100px' }}
-        > container
+        >  
           <div
             className="absolute z-[5] h-full w-full rounded-md"
             onDragOver={(e) => {

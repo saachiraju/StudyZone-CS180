@@ -116,18 +116,9 @@ function ClassPageBCOE() {
 
           <div className="section">
             <h3 className="section-heading">📚 Course Resources</h3>
-            {course.syllabus ? (
-              <a
-                href={course.syllabus}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="blue-button"
-              >
-                View Syllabus (PDF)
-              </a>
-            ) : (
-              <p>No resources added yet.</p>
-            )}
+            <Link href={`/classpages/bcoe/${courseId}/resources`} className="blue-button">
+              View Course Resources
+            </Link>
           </div>
         </>
       ) : (

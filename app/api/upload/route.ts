@@ -5,8 +5,8 @@ import { list } from '@vercel/blob';
 export async function POST(request: Request): Promise<NextResponse> {
   const body = (await request.json()) as HandleUploadBody & { folder?: string };
 
-  //const folder = body.folder || 'default-folder';
-  const folder = 'CS010A';
+  const folder = body.folder || 'default-folder';
+  //const folder = 'CS010A';
 
   try {
     const jsonResponse = await handleUpload({
