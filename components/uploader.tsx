@@ -4,8 +4,7 @@ import { useState, type FormEvent } from 'react'
 import toast from 'react-hot-toast'
 import { upload } from '@vercel/blob/client'
 import ProgressBar from './progress-bar'
-
-
+import './styles.css'
 
 export default function Uploader() {
   const [preview, setPreview] = useState<string | null>(null)
@@ -32,7 +31,7 @@ export default function Uploader() {
       let uploadedBlob
   
       try {
-        const blob = await upload(file.name, file, {
+        const blob = await upload(`CS010A/${file.name}`, file, {
           access: 'public',
           handleUploadUrl: '/api/upload',
           onUploadProgress: (progressEvent) => {
@@ -87,15 +86,9 @@ export default function Uploader() {
       reset()
     }
   }
-  
 
   function handleFileChange(file: File) {
     toast.dismiss()
-
-    //if (file.type.split('/')[0] !== 'image') {
-    //  toast.error('We only accept image files')
-    //  return
-    //}
 
     if (file.size / 1024 / 1024 > 50) {
       toast.error('File size too big (max 50MB)')
@@ -107,24 +100,16 @@ export default function Uploader() {
   }
 
   return (
-    <form className="grid gap-6" onSubmit={handleSubmit}>
+    <form className="grid gap-4" onSubmit={handleSubmit}>
       <div>
-        <div className="space-y-1 mb-4">
-          <h2 className="text-xl font-semibold">Upload a file</h2>
+        <div className="space-y-1 mb-2">
+          <h2 className="text-lg font-semibold">Upload a file</h2>
         </div>
-        <div className="flex gap-2 mb-4">
-        <input
-          type="text"
-          placeholder="Enter image name (e.g. CS135 Lecture 3 ppt)"
-          className="border p-2 rounded w-full"
-          value={imageName}
-          onChange={(e) => setImageName(e.target.value)}
-        />
-      </div>
         <label
           htmlFor="file-upload"
-          className="group relative mt-2 flex h-72 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
-        >
+          className="group relative flex h-96 cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
+          style={{ height: '100px' }}
+        > container
           <div
             className="absolute z-[5] h-full w-full rounded-md"
             onDragOver={(e) => {
@@ -165,7 +150,7 @@ export default function Uploader() {
             <svg
               className={`${
                 dragActive ? 'scale-110' : 'scale-100'
-              } h-7 w-7 text-gray-500 transition-all duration-75 group-hover:scale-110 group-active:scale-95`}
+              } h-6 w-6 text-gray-500 transition-all duration-75 group-hover:scale-110 group-active:scale-95`}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -181,32 +166,25 @@ export default function Uploader() {
               <path d="M12 12v9" />
               <path d="m16 16-4-4-4 4" />
             </svg>
-            <p className="mt-2 text-center text-sm text-gray-500">
-              Drag and drop or click to upload.
-            </p>
-            <p className="mt-2 text-center text-sm text-gray-500">
-              Max file size: 50MB
-            </p>
             <span className="sr-only">Photo upload</span>
           </div>
           {preview && file?.type.startsWith('image') ? (
-              <img
-                src={preview}
-                alt="Preview"
-                className="h-full w-full rounded-md object-cover"
-              />
-            ) : file ? (
-              <div className="flex flex-col items-center justify-center h-full">
-                <p className="text-sm text-gray-600">{file.name}</p>
-              </div>
-            ) : null}
+            <img
+              src={preview}
+              alt="Preview"
+              className="h-24 w-24 rounded-md object-cover"
+            />
+          ) : file ? (
+            <div className="flex flex-col items-center justify-center h-full">
+              <p className="text-xs text-gray-600">{file.name}</p>
+            </div>
+          ) : null}
         </label>
         <div className="mt-1 flex rounded-md shadow-sm">
           <input
             id="file-upload"
             name="file"
             type="file"
-            //accept="image/*"
             className="sr-only"
             onChange={(event) => {
               const file = event.currentTarget?.files?.[0]
@@ -219,25 +197,28 @@ export default function Uploader() {
       </div>
 
       <div className="space-y-2">
-        {isUploading && <ProgressBar value={progress} />}
+  {isUploading && <ProgressBar value={progress} />}
 
-        <button
-          type="submit"
-          disabled={isUploading || !file}
-          className="border-black bg-black text-white hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400 flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
-        >
-          <p className="text-sm">Upload</p>
-        </button>
+  <div className="flex gap-2">
+    <button
+      type="reset"
+      onClick={reset}
+      disabled={isUploading || !file}
+      className="border-gray-200 bg-gray-100 text-gray-700 hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400 flex h-8 flex-1 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
+    >
+      Reset
+    </button>
 
-        <button
-          type="reset"
-          onClick={reset}
-          disabled={isUploading || !file}
-          className="border-gray-200 bg-gray-100 text-gray-700 hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400 flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
-        >
-          Reset
-        </button>
-      </div>
+    <button
+      type="submit"
+      disabled={isUploading || !file}
+      className="border-black bg-black text-white hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400 flex h-8 flex-1 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
+    >
+      Upload
+    </button>
+    
+  </div>
+</div>
     </form>
   )
 }
