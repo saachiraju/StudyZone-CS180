@@ -1,0 +1,25 @@
+.text-lg {
+  font-size: 1rem; /* Default size for text-lg */
+}
+
+.text-sm {
+  font-size: 1rem; /* Default size for text-sm */
+}
+
+.text-xs {
+  font-size: 0.5rem; /* Default size for text-xs */
+}
+
+.space-y-1 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.group.relative {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* Adjust height if needed */
+}
+
+.text-base {
+  font-size: 1rem; /* Adjust this for larger button text */
+}

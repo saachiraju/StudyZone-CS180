@@ -1,0 +1,29 @@
+  .boxmodule {
+    width: 200px;
+    height: 200px;
+    background-color: #83d6b2;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    object-fit: contain;
+    outline-style: solid;
+    outline-color: black;
+    border-radius: 5%;
+}
+
+.boxcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+    padding-left: 40px;
+    padding-right: 80px;
+  }
+  
+  .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+  }
