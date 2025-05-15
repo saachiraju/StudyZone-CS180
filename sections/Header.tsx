@@ -34,7 +34,7 @@ export const Header = () => {
 
         {/* Left */}
         <div className="flex items-center gap-6">
-          <span className="text-lg font-semibold text-white">StudyHub</span>
+          <span className="text-lg font-semibold text-white">StudyZone</span>
 
           <div className="flex items-center gap-4 text-sm">
             {/* Subjects Dropdown */}
