@@ -18,7 +18,7 @@ function BCOE() {
 
   const groupedClasses: Record<string, string[]> = {
     'Computer Science': [
-      'CS010A', 'CS010B', 'CS030', 'CS061', 'CS100',
+      'CS010A', 'CS010B', 'CS010C', 'CS030', 'CS061', 'CS100',
       'CS141', 'CS153', 'CS161', 'CS166', 'CS171', 'CS180'
     ],
     'Electrical Engineering': [

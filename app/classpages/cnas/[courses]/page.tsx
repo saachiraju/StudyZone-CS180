@@ -4,11 +4,12 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
 
-function ClassPage() {
+function ClassPageCNAS() {
   const params = useParams();
-  const courseId = params?.courseId?.toString();
+  const courseId = params?.courses?.toString();
 
-  const courseResources: Record<string, { description: string; syllabus?: string }> = {
+
+  const cnasCourseResources: Record<string, { description: string; syllabus?: string }> = {
     // Biology
     BIOL100: { description: "Introduction to Biology: Covers cell structure, genetics, evolution, and basic physiology." },
     BIOL102: { description: "Principles of Ecology and Evolution: Focuses on ecosystems, biodiversity, and evolutionary theory." },
@@ -87,7 +88,7 @@ function ClassPage() {
     BPSC135: { description: "Plant Genetics: Inheritance and genetic engineering." }
   };
 
-  const course = courseId ? courseResources[courseId] : null;
+  const course = courseId ? cnasCourseResources[courseId] : null;
 
   return (
     <div className="page-container course-layout">
@@ -124,18 +125,9 @@ function ClassPage() {
 
           <div className="section">
             <h3 className="section-heading">📚 Course Resources</h3>
-            {course.syllabus ? (
-              <a
-                href={course.syllabus}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="blue-button"
-              >
-                View Syllabus (PDF)
-              </a>
-            ) : (
-              <p>No resources added yet.</p>
-            )}
+            <Link href={`/classpages/cnas/${courseId}/resources`} className="blue-button">
+              View Course Resources
+            </Link>
           </div>
         </>
       ) : (
@@ -145,4 +137,4 @@ function ClassPage() {
   );
 }
 
-export default ClassPage;
+export default ClassPageCNAS;

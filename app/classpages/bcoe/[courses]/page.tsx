@@ -19,9 +19,17 @@ function ClassPageBCOE() {
       description:
         'Intro to CS II: object‑oriented programming, basic data structures, and algorithm analysis in C++.',
     },
+    CS010C: {
+      description:
+      'Fuad Jamour',
+    },
     CS030: {
       description:
         'Programming in Python: problem solving, scripting, and data handling for engineers.',
+    },
+    CS061: {
+      description:
+        'Programming in Math: problem creating, scripting, and data handling for freshmen.',
     },
     CS153: {
       description:
@@ -89,7 +97,7 @@ function ClassPageBCOE() {
 
   return (
     <div className="page-container course-layout">
-      <h2 className="course-title">{courseId} Resource Page</h2>
+      <h2 className="course-title">{courseId} Class Page</h2>
 
       {course ? (
         <>
