@@ -61,6 +61,26 @@ export default function Home() {
                 ? '/doc-icon.png'
                 : ext === 'txt'
                 ? '/txt-icon.png'
+                : ext === 'ipynb'
+                ? '/ipynb-icon.png'
+                : ext === 'cpp'
+                ? '/cpp-icon.png'
+                : ext === 'cs'
+                ? '/cs-icon.png'
+                : ext === 'css'
+                ? '/css-icon.png'
+                : ext === 'py'
+                ? '/py-icon.png'
+                : ext === 'java'
+                ? '/java-icon.png'
+                : ext === 'js'
+                ? '/js-icon.png'
+                : ext === 'ts'
+                ? '/ts-icon.png'
+                : ext === 'tsx'
+                ? '/ts-icon.png'
+                : ext === 'html'
+                ? '/html-icon.png'
                 : img.url;
 
             return (
@@ -75,10 +95,10 @@ export default function Home() {
                     className="image"
                     style={{
                       objectFit: 'cover',
-                      width: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt'].includes(ext)
+                      width: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx'].includes(ext)
                         ? '80%'
                         : '100%',
-                      height: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt'].includes(ext)
+                      height: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx'].includes(ext)
                         ? '80%'
                         : '85%',
                       margin: '0 auto',
@@ -103,6 +123,33 @@ export default function Home() {
         </a>
         <a href="https://www.flaticon.com/free-icons/ppt" title="ppt icons">
           Ppt icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/ipynb" title="ipynb icons">
+          Ipynb icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/c-" title="c++ icons">
+          C++ icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/c-" title="c++ icons">
+          C++ icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/css" title="css icons">
+          Css icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/python" title="python icons">
+          Python icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/java-script" title="java script icons">
+          Java icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/javascript" title="javascript icons">
+          Javascript icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/typescript" title="typescript icons">
+          Typescript icons
+        </a>
+        <a href="https://www.flaticon.com/free-icons/html" title="html icons">
+          Html icons
         </a>
       </div>
     </main>
