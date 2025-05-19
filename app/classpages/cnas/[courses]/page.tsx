@@ -99,7 +99,7 @@ function ClassPageCNAS() {
 
           <div className="section">
             <h3 className="section-heading">⭐ Rate My Course</h3>
-            <Link href={`/rate/${courseId}`} className="blue-button">
+            <Link href={`/cnas/ratings`} className="blue-button">
               Rate This Course
             </Link>
           </div>

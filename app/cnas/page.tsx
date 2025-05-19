@@ -71,7 +71,7 @@ function CNAS() {
           />
 
           <Link
-            href="/college/CNAS/ratings"
+            href="/cnas/ratings"
             className="class-card"
             style={{ maxWidth: "fit-content" }}
           >
