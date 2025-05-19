@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/seed.ts"
-  ],
+, "dependencies/firebase.ts", "app/bcoe/ratings/page.tsx"  ],
   "exclude": ["node_modules"]
 }

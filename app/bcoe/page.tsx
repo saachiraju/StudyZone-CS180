@@ -80,7 +80,7 @@ function BCOE() {
           />
 
           <Link
-            href="/college/BCOE/ratings"
+            href="/bcoe/ratings"
             className="class-card"
             style={{ maxWidth: "fit-content" }}
           >
