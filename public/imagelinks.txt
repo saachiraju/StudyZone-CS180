@@ -1,0 +1,7 @@
+cooldog1, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/6A91D331-5C35-41B6-A9FB-567007DDE0A2-rXgfp4xEuMwWJ8faabvZ5Dr6rk2aCx.jpeg
+cooldog2, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/cooldog-6srcfvSDox1lHr6uetF4MMF1IWEbMq.jpg
+bearplush, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/gelding-bay-coat-UV6UjSVrEw33WZI8i8t5YxC4yxiI1M.webp
+horse, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/IMG_5355-ncDQ0PLW3u98EGFqR00GXpoWjEIMZB.jpeg
+chiikawa, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/IMG_3889-GsY8JhKotBS2t9SG7cB9RMxc8cHznv.jpeg
+gif, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/nrealgif-tk9ZDX4fes9pniwbeKPBoEFQgcMJ0o.gif
+ppt, https://xzth7tov0hhmtg0y.public.blob.vercel-storage.com/Lec4-Architecture-jYwqG1bnEZIPjjtJIFT050RdJvdmLt.pptx
