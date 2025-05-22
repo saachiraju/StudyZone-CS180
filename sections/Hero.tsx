@@ -17,7 +17,7 @@ export const Hero = () => {
               Get Started
             </a>
             <a
-              href="#" 
+              href="https://quizlet.com" 
               className="border border-black text-black px-6 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition"
             >
               Learn More

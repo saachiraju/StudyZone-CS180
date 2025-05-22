@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
+import { Header } from '@/sections/Header';
 
 function ClassPageBCOE() {
   const params = useParams();
@@ -96,6 +97,7 @@ function ClassPageBCOE() {
   const course = courseId ? bcoeCourseResources[courseId] : null;
 
   return (
+    <><Header />
     <div className="page-container course-layout">
       <h2 className="course-title">{courseId} Class Page</h2>
 
@@ -133,6 +135,7 @@ function ClassPageBCOE() {
         <p>No detailed resources available for this course yet.</p>
       )}
     </div>
+    </>
   );
 }
 
