@@ -97,7 +97,7 @@ function ClassPageBCOE() {
   const course = courseId ? bcoeCourseResources[courseId] : null;
 
   return (
-    <><Header />
+    <>
     <div className="page-container course-layout">
       <h2 className="course-title">{courseId} Class Page</h2>
 
