@@ -6,7 +6,6 @@ import { FlashcardCarousel } from "@/sections/Flashcards";
 export default function Home() {
   return (
     <>
-    <Header/> 
     <Hero />  
     <FlashcardCarousel/>
     {/* <Uploader/> */}
@@ -90,7 +89,7 @@ export default function Home() {
 //     <section className="bg-white text-black py-20 px-6">
 //         <div className="max-w-6xl mx-auto text-center">
 //           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-//             Master Your Subjects with <span className="text-blue-600">StudyHub</span>
+//             Master Your Subjects with <span className="text-blue-600">StudyZone</span>
 //           </h1>
 //           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
 //             Access personalized study tools, upload your notes, and learn more efficiently—all in one place.

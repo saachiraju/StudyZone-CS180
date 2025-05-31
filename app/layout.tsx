@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { AuthProvider } from '@/dependencies/AuthContext';
-
+import { Header } from '@/sections/Header';
 export const metadata = {
   title: 'Vercel Blob Starter',
   description: 'A simple Next.js app with Vercel Blob for image uploads',
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider><Header/>{children}</AuthProvider>
         </body>
     </html>
   )
