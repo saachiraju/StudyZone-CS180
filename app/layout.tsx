@@ -14,17 +14,18 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
 })
-
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
         <AuthProvider><Header/>{children}</AuthProvider>
         </body>
     </html>
-  )
+  );
 }
+
+
