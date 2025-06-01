@@ -1,5 +1,6 @@
 'use client';
 
+import { Header } from '@/sections/Header';
 import React, { useEffect, useState } from "react";
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -89,8 +90,8 @@ const CollegeRatingsPage = () => {
   };
 
   return (
-    <div style={{ 
-      padding: "2rem", 
+    <div style={{
+      padding: "2rem",
       position: "relative",
       backgroundColor: "#f8f9fa",
       minHeight: "100vh"
@@ -107,7 +108,7 @@ const CollegeRatingsPage = () => {
         alignItems: "center",
         justifyContent: "center"
       }}>
-        <Link 
+        <Link
           href={`/${collegeId.toLowerCase()}`}
           style={{
             position: "absolute",
@@ -127,8 +128,8 @@ const CollegeRatingsPage = () => {
         >
           <span style={{ fontSize: "1.1rem", marginRight: "0.3rem" }}>←</span> Back to Hub
         </Link>
-        <h1 style={{ 
-          textAlign: "center", 
+        <h1 style={{
+          textAlign: "center",
           margin: 0,
           fontSize: "2.2rem",
           fontWeight: "600"
@@ -136,7 +137,7 @@ const CollegeRatingsPage = () => {
           All Class Ratings in {collegeId}
         </h1>
         <button
-          style={{ 
+          style={{
             position: "absolute",
             right: 24,
             backgroundColor: "white",
@@ -157,8 +158,8 @@ const CollegeRatingsPage = () => {
       </div>
 
       {showForm && (
-        <div style={{ 
-          margin: "0 auto 2rem auto", 
+        <div style={{
+          margin: "0 auto 2rem auto",
           backgroundColor: "white",
           border: "1px solid #e1e4e8",
           borderRadius: "8px",
@@ -166,20 +167,20 @@ const CollegeRatingsPage = () => {
           maxWidth: "500px",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)"
         }}>
-          <h3 style={{ 
-            color: "#0047ab", 
-            marginTop: 0, 
+          <h3 style={{
+            color: "#0047ab",
+            marginTop: 0,
             marginBottom: "1.5rem",
             borderBottom: "2px solid #0047ab",
             paddingBottom: "0.5rem"
           }}>
             Submit a New Rating
           </h3>
-          
+
           <div style={{ marginBottom: "1.2rem" }}>
-            <label style={{ 
-              display: "block", 
-              marginBottom: "0.5rem", 
+            <label style={{
+              display: "block",
+              marginBottom: "0.5rem",
               color: "#333",
               fontWeight: "500"
             }}>
@@ -189,21 +190,20 @@ const CollegeRatingsPage = () => {
               type="text"
               value={classCode}
               onChange={(e) => setClassCode(e.target.value)}
-              style={{ 
+              style={{
                 width: "100%",
                 padding: "0.6rem",
                 border: "1px solid #cfd7e6",
                 borderRadius: "4px",
                 fontSize: "1rem"
               }}
-              placeholder="Enter class code"
-            />
+              placeholder="Enter class code" />
           </div>
-          
+
           <div style={{ marginBottom: "1.2rem" }}>
-            <label style={{ 
-              display: "block", 
-              marginBottom: "0.5rem", 
+            <label style={{
+              display: "block",
+              marginBottom: "0.5rem",
               color: "#333",
               fontWeight: "500"
             }}>
@@ -216,12 +216,11 @@ const CollegeRatingsPage = () => {
                 max="5"
                 value={rating}
                 onChange={(e) => setRating(Number(e.target.value))}
-                style={{ 
+                style={{
                   flexGrow: 1
-                }}
-              />
-              <span style={{ 
-                fontWeight: "bold", 
+                }} />
+              <span style={{
+                fontWeight: "bold",
                 color: "#0047ab",
                 minWidth: "30px",
                 textAlign: "center"
@@ -233,11 +232,11 @@ const CollegeRatingsPage = () => {
               <StarRating rating={rating} />
             </div>
           </div>
-          
+
           <div style={{ marginBottom: "1.5rem" }}>
-            <label style={{ 
-              display: "block", 
-              marginBottom: "0.5rem", 
+            <label style={{
+              display: "block",
+              marginBottom: "0.5rem",
               color: "#333",
               fontWeight: "500"
             }}>
@@ -247,7 +246,7 @@ const CollegeRatingsPage = () => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               rows={3}
-              style={{ 
+              style={{
                 width: "100%",
                 padding: "0.6rem",
                 border: "1px solid #cfd7e6",
@@ -255,12 +254,11 @@ const CollegeRatingsPage = () => {
                 fontSize: "1rem",
                 fontFamily: "inherit"
               }}
-              placeholder="Share your experience with this class..."
-            />
+              placeholder="Share your experience with this class..." />
           </div>
-          
-          <button 
-            onClick={handleSubmit} 
+
+          <button
+            onClick={handleSubmit}
             style={{
               backgroundColor: "#0047ab",
               color: "white",
@@ -294,11 +292,11 @@ const CollegeRatingsPage = () => {
         </div>
       ) : (
         Object.entries(groupedRatings).map(([classCode, ratings]) => (
-          <div 
-            key={classCode} 
-            style={{ 
+          <div
+            key={classCode}
+            style={{
               marginBottom: "2rem",
-              backgroundColor: "white", 
+              backgroundColor: "white",
               borderRadius: "8px",
               overflow: "hidden",
               maxWidth: "800px",
@@ -306,7 +304,7 @@ const CollegeRatingsPage = () => {
               boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)"
             }}
           >
-            <div style={{ 
+            <div style={{
               backgroundColor: "#0047ab",
               color: "white",
               padding: "0.8rem 1.5rem",
@@ -315,7 +313,7 @@ const CollegeRatingsPage = () => {
             }}>
               <h2 style={{ margin: 0, fontSize: "1.5rem" }}>{classCode}</h2>
             </div>
-            
+
             <table style={{
               width: "100%",
               tableLayout: "fixed",

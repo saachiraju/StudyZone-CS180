@@ -32,19 +32,12 @@ function BCOE() {
       'CHE100', 'CHE110A', 'CHE110B', 'CHE120A', 'CHE120B',
       'ENVE100', 'ENVE110', 'ENVE130'
     ],
-    Bioengineering: ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
+    'Bioengineering': ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
     'General Engineering': ['ENGR001', 'ENGR154']
   };
 
   return (
     <div className="page-container">
-      <div className="college-selector">
-        <select onChange={handleCollegeChange} defaultValue="BCOE" className="college-dropdown">
-          <option value="" disabled>Select College</option>
-          <option value="BCOE">Bourns College of Engineering</option>
-          <option value="CNAS">College of Natural & Agricultural Sciences</option>
-        </select>
-      </div>
 
       <div className="header-banner">
         <img
@@ -95,7 +88,7 @@ function BCOE() {
 
           return (
             <div key={department} className="mb-6">
-              <h2 style={{ fontWeight: 'bold', margin: '20px 0 10px' }}>
+              <h2 className="department-heading" style={{ fontWeight: 'bold', margin: '20px 0 10px' }}>
                 {department}
               </h2>
 

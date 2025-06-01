@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-
+import Link from 'next/link';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '@/dependencies/firebase'; // adjust path
 //import { useRouter } from 'next/navigation';
@@ -34,7 +34,11 @@ export const Header = () => {
 
         {/* Left */}
         <div className="flex items-center gap-6">
-          <span className="text-lg font-semibold text-white">StudyHub</span>
+          <span className="text-lg font-semibold text-white">
+            <Link href={`/`} className="home-button">
+              StudyZone
+            </Link>
+            </span>
 
           <div className="flex items-center gap-4 text-sm">
             {/* Subjects Dropdown */}
@@ -43,14 +47,13 @@ export const Header = () => {
                 onClick={() => setSubjectsOpen(!subjectsOpen)}
                 className="flex items-center gap-1 hover:underline"
               >
-                Subjects <ChevronDown className="w-4 h-4" />
+                Colleges <ChevronDown className="w-4 h-4" />
               </button>
 
               {subjectsOpen && (
                 <div className="absolute left-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg py-2 z-50">
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">Math</a>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">Science</a>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">History</a>
+                  <a href="/bcoe" className="block px-4 py-2 hover:bg-gray-100">BCOE</a>
+                  <a href="/cnas" className="block px-4 py-2 hover:bg-gray-100">CNAS</a>
                 </div>
               )}
             </div>
