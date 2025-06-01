@@ -6,7 +6,7 @@ import Nav from "@/sections/nav"
 export default function Home(){
     return(
         <>
-    <Header/>
+    {/*<Header/>*/}
     {/* <ClassesPage/> */}
     {/* <Hero/>
     

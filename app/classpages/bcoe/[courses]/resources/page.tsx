@@ -7,6 +7,7 @@ import './styles.css';
 import UploaderComponent from '@/components/uploader';
 import { Toaster } from '@/components/toaster';
 import { useParams } from 'next/navigation';
+import { Header } from '@/sections/Header';
 
 type ImageEntry = {
   label: string;
@@ -36,6 +37,7 @@ export default function Home() {
   }, [courseId]);
 
   return (
+    <>
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Toaster />
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
@@ -130,9 +132,6 @@ export default function Home() {
         <a href="https://www.flaticon.com/free-icons/c-" title="c++ icons">
           C++ icons
         </a>
-        <a href="https://www.flaticon.com/free-icons/c-" title="c++ icons">
-          C++ icons
-        </a>
         <a href="https://www.flaticon.com/free-icons/css" title="css icons">
           Css icons
         </a>
@@ -153,5 +152,6 @@ export default function Home() {
         </a>
       </div>
     </main>
+    </>
   );
 }

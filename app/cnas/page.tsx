@@ -33,16 +33,7 @@ function CNAS() {
   };
 
   return (
-    <>
-    <Header/>
     <div className="page-container">
-      <div className="college-selector">
-        <select onChange={handleCollegeChange} defaultValue="CNAS" className="college-dropdown">
-          <option value="" disabled>Select College</option>
-          <option value="BCOE">Bourns College of Engineering</option>
-          <option value="CNAS">College of Natural & Agricultural Sciences</option>
-        </select>
-      </div>
 
       <div className="header-banner">
         <img
@@ -105,7 +96,6 @@ function CNAS() {
         })}
       </div>
     </div>
-    </>
   );
 }
 

@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { AuthProvider } from '@/dependencies/AuthContext';
 import {twMerge} from "tailwind-merge";
 import { DM_Sans } from "next/font/google";
-
+import { Header } from '@/sections/Header';
 export const metadata = {
   title: 'Vercel Blob Starter',
   description: 'A simple Next.js app with Vercel Blob for image uploads',
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider><Header/>{children}</AuthProvider>
         </body>
     </html>
   )
