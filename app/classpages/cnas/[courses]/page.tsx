@@ -105,13 +105,6 @@ function ClassPageCNAS() {
           </div>
 
           <div className="section">
-            <h3 className="section-heading">💬 Class Live Chat</h3>
-            <Link href={`/chat/${courseId}`} className="blue-button">
-              Open Class Chat
-            </Link>
-          </div>
-
-          <div className="section">
             <h3 className="section-heading">💬 Join This Quarter's Discord</h3>
             <a
               href="https://discord.com/invite/your-server-id"
