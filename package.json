@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@vercel/blob": "^1.0.1",
     "firebase": "^11.7.1",
     "googleapis": "^148.0.0",
