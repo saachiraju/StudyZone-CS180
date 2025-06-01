@@ -38,6 +38,18 @@ function BCOE() {
 
   return (
     <div className="page-container">
+      {/* College Selector Dropdown */}
+      <div className="college-selector">
+        <select
+          className="college-dropdown"
+          onChange={handleCollegeChange}
+          value="bcoe"
+        >
+          <option value="">Select a College</option>
+          <option value="bcoe">Bourns College of Engineering</option>
+          <option value="cnas">College of Natural & Agricultural Sciences</option>
+        </select>
+      </div>
 
       <div className="header-banner">
         <img
