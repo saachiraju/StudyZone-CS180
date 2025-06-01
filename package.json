@@ -25,6 +25,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/ms": "^2.1.0",
     "@types/node": "^22.15.17",
     "@types/react": "^19.1.3",

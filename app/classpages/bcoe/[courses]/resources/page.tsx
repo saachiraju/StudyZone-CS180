@@ -23,16 +23,24 @@ export default function Home() {
     fetch(`/api/blobs?folder=${courseId}`)
       .then((res) => res.json())
       .then((data) => {
-        const parsed = data.urls.map((url: string) => ({
-          label: url.substring(56, url.lastIndexOf('.') - 31)
-            .replaceAll('%', ' ')
-            .replaceAll('-', ' ')
-            .replace(courseId + '/', ''),
-          url,
-        }));
-        setImages(parsed);
+        if (data && data.urls && Array.isArray(data.urls)) {
+          const parsed = data.urls.map((url: string) => ({
+            label: url.substring(56, url.lastIndexOf('.') - 31)
+              .replaceAll('%', ' ')
+              .replaceAll('-', ' ')
+              .replace(courseId + '/', ''),
+            url,
+          }));
+          setImages(parsed);
+        } else {
+          console.warn('No URLs found in response:', data);
+          setImages([]);
+        }
       })
-      .catch((err) => console.error('Failed to load blob links:', err));
+      .catch((err) => {
+        console.error('Failed to load blob links:', err);
+        setImages([]);
+      });
   }, [courseId]);
 
   return (

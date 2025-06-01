@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import '@/styles/Pages.css';
-import {Header} from '@/sections/Header'
+
 function CNAS() {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
@@ -33,8 +33,6 @@ function CNAS() {
   };
 
   return (
-    <>
-    <Header/>
     <div className="page-container">
       <div className="college-selector">
         <select onChange={handleCollegeChange} defaultValue="CNAS" className="college-dropdown">
@@ -105,7 +103,6 @@ function CNAS() {
         })}
       </div>
     </div>
-    </>
   );
 }
 
