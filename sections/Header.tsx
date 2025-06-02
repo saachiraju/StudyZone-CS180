@@ -90,14 +90,13 @@ export const Header = () => {
               <UserAvatar />
             </div>
           ) : (
-            // Show login/signup buttons when not logged in
-            <div className="flex items-center gap-4 text-sm pr-4">
-              <a href="#" className="hover:underline">Login</a>
+            // Show only "Log in" button when not logged in
+            <div className="flex items-center pr-4">
               <button 
-                className="bg-white text-black px-3 py-1 rounded-md hover:bg-gray-200 transition" 
+                className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition text-sm font-medium" 
                 onClick={handleGoogleSignIn}
               >
-                Sign Up
+                Log in
               </button>
             </div>
           )}
