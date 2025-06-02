@@ -81,44 +81,45 @@ export const UserAvatar = () => {
         }
 
         .user-avatar-button {
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
-          border: 2px solid #87ceeb;
-          background-color: #87ceeb;
+          border: 2px solid #4682b4;
+          background-color: #4682b4;
           color: white;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
           cursor: pointer;
           transition: all 0.2s ease;
-          box-shadow: 0 2px 8px rgba(135, 206, 235, 0.3);
+          box-shadow: 0 2px 8px rgba(70, 130, 180, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
         .user-avatar-button:hover {
-          background-color: #6bb6ff;
-          border-color: #6bb6ff;
+          background-color: #ffd700;
+          border-color: #ffd700;
+          color: #000;
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4);
+          box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
         }
 
         .user-avatar-letter {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
         }
 
         .user-avatar-dropdown {
           position: absolute;
-          top: 50px;
+          top: 46px;
           right: 0;
           width: 280px;
           background: white;
           border: 1px solid #e5e7eb;
           border-radius: 12px;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
           z-index: 1000;
           overflow: hidden;
         }
@@ -132,7 +133,7 @@ export const UserAvatar = () => {
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          background-color: #87ceeb;
+          background-color: #4682b4;
           color: white;
           font-size: 24px;
           font-weight: 600;
@@ -142,7 +143,7 @@ export const UserAvatar = () => {
           align-items: center;
           justify-content: center;
           border: 3px solid #f0f9ff;
-          box-shadow: 0 4px 12px rgba(135, 206, 235, 0.2);
+          box-shadow: 0 4px 12px rgba(70, 130, 180, 0.2);
         }
 
         .user-avatar-letter-large {

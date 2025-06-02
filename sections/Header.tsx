@@ -8,6 +8,7 @@ import { auth, googleProvider } from '@/dependencies/firebase'; // adjust path
 //import { useRouter } from 'next/navigation';
 
 import { useAuth } from '@/dependencies/AuthContext';
+import { UserAvatar } from '@/components/UserAvatar';
 
 export const Header = () => {
   const [subjectsOpen, setSubjectsOpen] = useState(false);
@@ -30,7 +31,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-black text-white text-xl">
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-4 relative">
+      <div className="w-full flex justify-between items-center py-3 pl-4 pr-0 relative">
 
         {/* Left */}
         <div className="flex items-center gap-6">
@@ -78,19 +79,28 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Right */}
-        <header>
+        {/* Right - User Authentication Section */}
+        <div className="flex items-center">
           {currentUser ? (
-            <p>Welcome, {currentUser.displayName}</p>
+            // Show welcome message and user avatar when logged in
+            <div className="flex items-center gap-3 pr-4">
+              <span className="text-white text-sm font-medium">
+                Welcome, {currentUser.displayName || currentUser.email?.split('@')[0] || 'User'}
+              </span>
+              <UserAvatar />
+            </div>
           ) : (
-            <p>Please sign in</p>
+            // Show login/signup buttons when not logged in
+            <div className="flex items-center gap-4 text-sm pr-4">
+              <a href="#" className="hover:underline">Login</a>
+              <button 
+                className="bg-white text-black px-3 py-1 rounded-md hover:bg-gray-200 transition" 
+                onClick={handleGoogleSignIn}
+              >
+                Sign Up
+              </button>
+            </div>
           )}
-      </header>
-        <div className="flex items-center gap-4 text-sm">
-          <a href="#" className="hover:underline">Login</a>
-          <button className="bg-white text-black px-3 py-1 rounded-md hover:bg-gray-200 transition" onClick={handleGoogleSignIn}>
-            Sign Up
-          </button>
         </div>
       </div>
     </header>

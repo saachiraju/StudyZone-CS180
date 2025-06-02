@@ -4,7 +4,6 @@ import { AuthProvider } from '@/dependencies/AuthContext';
 import {twMerge} from "tailwind-merge";
 import { DM_Sans } from "next/font/google";
 import { Header } from '@/sections/Header';
-import { UserAvatar } from '@/components/UserAvatar';
 
 export const metadata = {
   title: 'Vercel Blob Starter',
@@ -27,16 +26,6 @@ export default function RootLayout({
         <AuthProvider>
           <Header/>
           <div style={{ position: 'relative', minHeight: '100vh' }}>
-            {/* User Avatar - Top Right Corner */}
-            <div style={{
-              position: 'fixed',
-              top: '20px',
-              right: '20px',
-              zIndex: 1000
-            }}>
-              <UserAvatar />
-            </div>
-            
             {/* Main Content */}
             {children}
           </div>

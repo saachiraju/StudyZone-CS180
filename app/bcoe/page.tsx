@@ -1,20 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import '@/styles/Pages.css';
 
 function BCOE() {
   const [searchTerm, setSearchTerm] = useState('');
-  const router = useRouter();
-
-  const handleCollegeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCollege = e.target.value;
-    if (selectedCollege) {
-      router.push(`/${selectedCollege.toLowerCase()}`);
-    }
-  };
 
   const groupedClasses: Record<string, string[]> = {
     'Computer Science': [
@@ -38,19 +29,6 @@ function BCOE() {
 
   return (
     <div className="page-container">
-      {/* College Selector Dropdown */}
-      <div className="college-selector">
-        <select
-          className="college-dropdown"
-          onChange={handleCollegeChange}
-          value="bcoe"
-        >
-          <option value="">Select a College</option>
-          <option value="bcoe">Bourns College of Engineering</option>
-          <option value="cnas">College of Natural & Agricultural Sciences</option>
-        </select>
-      </div>
-
       <div className="header-banner">
         <img
           src="/bcoe-logo.png"
