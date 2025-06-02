@@ -42,15 +42,15 @@ function ClassPageBCOE() {
     },
     EE100A: {
       description:
-        'Electronic Circuits I: diodes, BJTs, MOSFETs, biasing, and small‑signal analysis.',
+        'Electronic Circuits I: diodes, BJTs, MOSFETs, biasing, and small‑signal analysis.',
     },
     EE100B: {
       description:
-        'Electronic Circuits II: frequency response, feedback, differential and operational amplifier design.',
+        'Electronic Circuits II: frequency response, feedback, differential and operational amplifier design.',
     },
     EE110A: {
       description:
-        'Signals and Systems I: convolution, continuous‑time Fourier series and transforms, Laplace domain.',
+        'Signals and Systems I: convolution, continuous‑time Fourier series and transforms, Laplace domain.',
     },
     EE132: {
       description:
@@ -98,7 +98,45 @@ function ClassPageBCOE() {
 
   return (
     <>
-    <div className="page-container course-layout">
+    <div className="page-container course-layout" style={{ position: 'relative' }}>
+      {/* Back Button */}
+      <Link 
+        href="/bcoe"
+        style={{
+          position: 'absolute',
+          top: 20,
+          left: 20,
+          backgroundColor: '#4682b4',
+          color: 'white',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          textDecoration: 'none',
+          fontWeight: '600',
+          fontSize: '14px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          boxShadow: '0 4px 15px rgba(70, 130, 180, 0.3)',
+          transition: 'all 0.3s ease',
+          border: '2px solid transparent',
+          zIndex: 10
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)';
+          e.currentTarget.style.color = '#2c5282';
+          e.currentTarget.style.borderColor = '#4682b4';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = '#4682b4';
+          e.currentTarget.style.color = 'white';
+          e.currentTarget.style.borderColor = 'transparent';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        <span style={{ fontSize: '16px' }}>←</span> Back to BCOE
+      </Link>
+
       <h2 className="course-title">{courseId} Class Page</h2>
 
       {course ? (
@@ -113,7 +151,7 @@ function ClassPageBCOE() {
           </div>
 
           <div className="section">
-            <h3 className="section-heading">💬 Join This Quarter’s Discord</h3>
+            <h3 className="section-heading">💬 Join This Quarter's Discord</h3>
             <a
               href="https://discord.com/invite/your-server-id"
               target="_blank"

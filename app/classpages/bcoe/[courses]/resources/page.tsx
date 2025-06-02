@@ -24,22 +24,69 @@ export default function Home() {
     fetch(`/api/blobs?folder=${courseId}`)
       .then((res) => res.json())
       .then((data) => {
-        const parsed = data.urls.map((url: string) => ({
-          label: url.substring(56, url.lastIndexOf('.') - 31)
-            .replaceAll('%', ' ')
-            .replaceAll('-', ' ')
-            .replace(courseId + '/', ''),
-          url,
-        }));
-        setImages(parsed);
+        if (data && data.urls && Array.isArray(data.urls)) {
+          const parsed = data.urls.map((url: string) => ({
+            label: url.substring(56, url.lastIndexOf('.') - 31)
+              .replaceAll('%', ' ')
+              .replaceAll('-', ' ')
+              .replace(courseId + '/', ''),
+            url,
+          }));
+          setImages(parsed);
+        } else {
+          console.warn('No URLs found in response:', data);
+          setImages([]);
+        }
       })
-      .catch((err) => console.error('Failed to load blob links:', err));
+      .catch((err) => {
+        console.error('Failed to load blob links:', err);
+        setImages([]);
+      });
   }, [courseId]);
 
   return (
     <>
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Toaster />
+      
+      {/* Back Button */}
+      <Link 
+        href="/bcoe"
+        style={{
+          position: 'absolute',
+          top: 20,
+          left: 20,
+          backgroundColor: '#4682b4',
+          color: 'white',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          textDecoration: 'none',
+          fontWeight: '600',
+          fontSize: '14px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          boxShadow: '0 4px 15px rgba(70, 130, 180, 0.3)',
+          transition: 'all 0.3s ease',
+          border: '2px solid transparent',
+          zIndex: 10
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)';
+          e.currentTarget.style.color = '#2c5282';
+          e.currentTarget.style.borderColor = '#4682b4';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = '#4682b4';
+          e.currentTarget.style.color = 'white';
+          e.currentTarget.style.borderColor = 'transparent';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        <span style={{ fontSize: '16px' }}>←</span> Back to BCOE
+      </Link>
+
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
         {courseId} Resources
       </h1>

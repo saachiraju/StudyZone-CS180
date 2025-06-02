@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import '@/styles/Pages.css';
-import { Header } from '@/sections/Header';
+
 function BCOE() {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
@@ -37,9 +37,19 @@ function BCOE() {
   };
 
   return (
-    <>
-    
     <div className="page-container">
+      {/* College Selector Dropdown */}
+      <div className="college-selector">
+        <select
+          className="college-dropdown"
+          onChange={handleCollegeChange}
+          value="bcoe"
+        >
+          <option value="">Select a College</option>
+          <option value="bcoe">Bourns College of Engineering</option>
+          <option value="cnas">College of Natural & Agricultural Sciences</option>
+        </select>
+      </div>
 
       <div className="header-banner">
         <img
@@ -90,7 +100,7 @@ function BCOE() {
 
           return (
             <div key={department} className="mb-6">
-              <h2 style={{ fontWeight: 'bold', margin: '20px 0 10px' }}>
+              <h2 className="department-heading" style={{ fontWeight: 'bold', margin: '20px 0 10px' }}>
                 {department}
               </h2>
 
@@ -111,7 +121,6 @@ function BCOE() {
         })}
       </div>
     </div>
-    </>
   );
 }
 

@@ -1,3 +1,5 @@
+import { GoogleLogin } from '@/components/GoogleLogin';
+
 export const Hero = () => {
     return (
       <section className="bg-white text-black py-20 px-6">
@@ -9,7 +11,7 @@ export const Hero = () => {
             Access personalized study tools, upload your notes, and learn more efficiently—all in one place.
           </p>
   
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
             <a
               href="/nav"    
               className="bg-black text-white px-6  py-3 rounded-md text-lg font-medium hover:bg-gray-800 transition"
@@ -22,6 +24,10 @@ export const Hero = () => {
             >
               Learn More
             </a>
+          </div>
+
+          <div className="flex justify-center">
+            <GoogleLogin />
           </div>
         </div>
       </section>
