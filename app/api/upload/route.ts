@@ -22,6 +22,7 @@ export async function POST(request: Request): Promise<NextResponse> {
             'application/octet-stream',
             'application/vnd.openxmlformats-officedocument.presentationml.presentation',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'video/*'
           ],
           addRandomSuffix: true,
           maximumSizeInBytes: 50 * 1024 * 1024, // 50MB

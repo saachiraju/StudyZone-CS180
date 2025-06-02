@@ -83,6 +83,10 @@ export default function Home() {
                 ? '/ts-icon.png'
                 : ext === 'html'
                 ? '/html-icon.png'
+                : ext === 'mp4'
+                ? '/vid-icon.jpg'
+                : ext === 'mov'
+                ? '/vid-icon.jpg'
                 : img.url;
 
             return (
@@ -97,10 +101,10 @@ export default function Home() {
                     className="image"
                     style={{
                       objectFit: 'cover',
-                      width: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx'].includes(ext)
+                      width: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx', 'mp4', 'mov'].includes(ext)
                         ? '80%'
                         : '100%',
-                      height: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx'].includes(ext)
+                      height: ['pdf', 'ppt', 'pptx', 'docx', 'doc', 'txt', 'ipynb', 'cpp', 'cs', 'css', 'py', 'java', 'js', 'ts', 'html', 'tsx', 'mp4', 'mov'].includes(ext)
                         ? '80%'
                         : '85%',
                       margin: '0 auto',
