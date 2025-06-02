@@ -3,10 +3,15 @@ import { NextResponse } from 'next/server';
 import { list } from '@vercel/blob';
 
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody & { folder?: string };
+  let body: HandleUploadBody & { folder?: string };
+
+  try {
+    body = await request.json();
+  } catch (err) {
+    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
 
   const folder = body.folder || 'default-folder';
-  //const folder = 'CS010A';
 
   try {
     const jsonResponse = await handleUpload({
@@ -26,7 +31,6 @@ export async function POST(request: Request): Promise<NextResponse> {
           ],
           addRandomSuffix: true,
           maximumSizeInBytes: 50 * 1024 * 1024, // 50MB
-          // Here's the important part: define the upload path with folder
           pathname: `${folder}/file`,
         };
       },
