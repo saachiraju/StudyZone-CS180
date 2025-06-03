@@ -15,7 +15,7 @@ const NewPostPage = () => {
     if (!currentUser) return alert('Please log in first!');
     if (!title.trim()) return alert('Title is required!');
     await addPost(title, body, currentUser.uid);
-    router.push('/reddit-chain');
+    router.push('/board');
   };
 
   return (
