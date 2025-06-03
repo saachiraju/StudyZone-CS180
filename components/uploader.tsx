@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react'
 import toast from 'react-hot-toast'
 import { upload } from '@vercel/blob/client'
 import ProgressBar from './progress-bar'
-import './styles.css'
+import '@/components/styles.css'
 
 type Props = {
   folder: string;

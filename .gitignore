@@ -41,3 +41,5 @@ yarn-error.log*
 *.json
 
 *.asc
+
+package-lock.json

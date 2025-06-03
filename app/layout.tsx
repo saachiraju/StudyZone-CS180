@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
         <AuthProvider>
-          <Header/>
+          {/* <Header/> */}
           <div style={{ position: 'relative', minHeight: '100vh' }}>
             {/* Main Content */}
             {children}
