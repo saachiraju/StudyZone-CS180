@@ -154,18 +154,6 @@ function ClassPageCNAS() {
           </div>
 
           <div className="section">
-            <h3 className="section-heading">💬 Join This Quarter's Discord</h3>
-            <a
-              href="https://discord.com/invite/your-server-id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="blue-button"
-            >
-              Join Discord
-            </a>
-          </div>
-
-          <div className="section">
             <h3 className="section-heading">📚 Course Resources</h3>
             <Link href={`/classpages/cnas/${courseId}/resources`} className="blue-button">
               View Course Resources

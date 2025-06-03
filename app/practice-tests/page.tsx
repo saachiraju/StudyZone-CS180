@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/dependencies/AuthContext';
 import '@/styles/Pages.css';
-import { collection, addDoc, serverTimestamp, getFirestore } from 'firebase/firestore';
-import app from '@/dependencies/firebase';
 
 interface Question {
   question: string;
@@ -35,8 +33,6 @@ function PracticeTests() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   const difficulties = ['Easy', 'Medium', 'Hard', 'Mixed'];
 
@@ -117,45 +113,6 @@ function PracticeTests() {
       }
     });
     return Math.round((correct / generatedTest.questions.length) * 100);
-  };
-
-  const handleSaveTest = async () => {
-    if (!currentUser || !generatedTest) {
-      setSaveMessage('Please log in to save tests');
-      return;
-    }
-
-    setIsSaving(true);
-    setSaveMessage(null);
-
-    try {
-      const testData = {
-        userId: currentUser.uid,
-        userEmail: currentUser.email,
-        questions: generatedTest.questions,
-        userAnswers,
-        score: calculateScore(),
-        difficulty: selectedDifficulty || 'Mixed',
-        questionCount: generatedTest.questions.length,
-        customInstructions: customInstructions || null,
-        fileName: uploadedFile?.name || 'Unknown PDF',
-        completedAt: serverTimestamp(),
-        createdAt: serverTimestamp()
-      };
-
-      // Save directly to Firestore
-      await addDoc(collection(getFirestore(app), 'savedTests'), testData);
-
-      setSaveMessage('Test saved successfully!');
-      setTimeout(() => setSaveMessage(null), 3000);
-
-    } catch (error) {
-      console.error('Error saving test:', error);
-      setSaveMessage(error instanceof Error ? error.message : 'Failed to save test');
-      setTimeout(() => setSaveMessage(null), 5000);
-    } finally {
-      setIsSaving(false);
-    }
   };
 
   if (generatedTest && !showResults) {
@@ -298,19 +255,6 @@ function PracticeTests() {
                 ).length} out of {generatedTest.questions.length} questions correctly.
               </p>
               
-              {saveMessage && (
-                <div style={{
-                  padding: '12px',
-                  borderRadius: '8px',
-                  marginBottom: '20px',
-                  backgroundColor: saveMessage.includes('successfully') ? '#d4edda' : '#f8d7da',
-                  border: saveMessage.includes('successfully') ? '1px solid #c3e6cb' : '1px solid #f5c6cb',
-                  color: saveMessage.includes('successfully') ? '#155724' : '#721c24'
-                }}>
-                  {saveMessage}
-                </div>
-              )}
-              
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => {
@@ -348,23 +292,6 @@ function PracticeTests() {
                 >
                   Retake Test
                 </button>
-
-                {currentUser && (
-                  <button
-                    onClick={handleSaveTest}
-                    disabled={isSaving}
-                    style={{
-                      padding: '12px 24px',
-                      backgroundColor: isSaving ? '#ccc' : '#5f9ea0',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '8px',
-                      cursor: isSaving ? 'not-allowed' : 'pointer'
-                    }}
-                  >
-                    {isSaving ? 'Saving...' : 'Save Test'}
-                  </button>
-                )}
               </div>
             </div>
 
