@@ -9,11 +9,13 @@ import {
   getDocs,
   query,
   where,
+  orderBy,
   serverTimestamp,
-  DocumentData,
+  Timestamp,
+  getDoc,
+  addDoc,
 } from "firebase/firestore";
 
-// Define the type for a rating
 export type RatingEntry = {
   collegeId: string;
   classCode: string;
@@ -39,7 +41,6 @@ const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Submit a new rating
 const submitRating = async (
   collegeId: string,
   classCode: string,
@@ -58,10 +59,9 @@ const submitRating = async (
   });
 };
 
-// Get all ratings for a class
 const getRatings = async (
   collegeId: string,
-  classCode?: string // Make classCode optional
+  classCode?: string
 ): Promise<RatingEntry[]> => {
   if (!collegeId) throw new Error("collegeId is required");
 
@@ -75,6 +75,52 @@ const getRatings = async (
   return snapshot.docs.map((doc) => doc.data() as RatingEntry);
 };
 
+const addPost = async (title: string, body: string, uid: string) => {
+  await addDoc(collection(db, "posts"), {
+    title,
+    body,
+    author: uid,
+    createdAt: Timestamp.now()
+  });
+};
 
-export { auth, googleProvider, submitRating, getRatings, storage };
+const getPosts = async () => {
+  const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+const getPostById = async (id: string) => {
+  const docRef = doc(db, "posts", id);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+};
+
+const addComment = async (postId: string, body: string, uid: string) => {
+  await addDoc(collection(db, `posts/${postId}/comments`), {
+    body,
+    author: uid,
+    createdAt: Timestamp.now()
+  });
+};
+
+const getComments = async (postId: string) => {
+  const q = query(collection(db, `posts/${postId}/comments`), orderBy("createdAt"));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+export {
+  auth,
+  googleProvider,
+  submitRating,
+  getRatings,
+  storage,
+  addPost,
+  getPosts,
+  getPostById,
+  addComment,
+  getComments
+};
+
 export default app;
