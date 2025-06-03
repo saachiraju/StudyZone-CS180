@@ -69,14 +69,18 @@ const CollegeRatingsPage = () => {
   const containsInappropriateContent = (text: string): boolean => {
     const inappropriateWords = [
       'bad word', // Demo case
-      'damn', 'hell', 'crap', 'stupid', 'idiot', 'dumb', 'suck', 'sucks',
-      'hate', 'awful', 'terrible', 'worst', 'garbage', 'trash', 'shit',
-      'fuck', 'bitch', 'ass', 'asshole', 'bastard', 'piss', 'penis',
-      'vagina', 'sex', 'sexy', 'porn', 'nude', 'naked'
+      'fuck', 'fucking', 'shit', 'damn', 'bitch', 'ass', 'asshole', 
+      'bastard', 'piss', 'crap', 'penis', 'vagina', 'sex', 'sexy', 
+      'porn', 'nude', 'naked', 'slut', 'whore', 'retard', 'retarded',
+      'gay', 'faggot', 'nigger', 'nigga', 'chink', 'spic'
     ];
     
     const lowerText = text.toLowerCase();
-    return inappropriateWords.some(word => lowerText.includes(word));
+    // Use word boundaries to match whole words only
+    return inappropriateWords.some(word => {
+      const regex = new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      return regex.test(lowerText);
+    });
   };
 
   // Calculate average rating for a class
