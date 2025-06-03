@@ -24,6 +24,22 @@ const StarRating = ({ rating }: { rating: number }) => {
   );
 };
 
+const classOptions = {
+  Biology: ['BIOL100', 'BIOL102', 'BIOL107', 'BIOL005A', 'BIOL005B', 'BIOL005C'],
+  Chemistry: ['CHEM001', 'CHEM001A', 'CHEM001B', 'CHEM001C', 'CHEM112', 'CHEM112A', 'CHEM112B'],
+  Mathematics: ['MATH009A', 'MATH009B', 'MATH009C', 'MATH010A', 'MATH010B', 'MATH046'],
+  Physics: ['PHYS002A', 'PHYS002B', 'PHYS002C', 'PHYS040A', 'PHYS040B', 'PHYS040C'],
+  Statistics: ['STAT155', 'STAT160', 'STAT170'],
+  "Environmental Sciences": ['ENSC001', 'ENSC100', 'ENSC130'],
+  Biochemistry: ['BCH001', 'BCH110A', 'BCH110B'],
+  Neuroscience: ['CBNS101', 'CBNS106', 'CBNS120'],
+  Microbiology: ['MIC100', 'PLPA120'],
+  "Earth Sciences": ['GEO001', 'GEO002', 'GEO100'],
+  Entomology: ['ENT001', 'ENT100', 'ENT120'],
+  Nematology: ['NEM100', 'NEM120', 'NEM130'],
+  Botany: ['BPSC001', 'BPSC100', 'BPSC135'],
+};
+
 const CollegeRatingsPage = () => {
   const { collegeId: paramCollegeId } = useParams<{ collegeId: string }>();
   const collegeId = paramCollegeId || "cnas"; // default to "cnas"
@@ -185,8 +201,7 @@ const CollegeRatingsPage = () => {
             }}>
               Class Code (e.g. CS180):
             </label>
-            <input
-              type="text"
+            <select
               value={classCode}
               onChange={(e) => setClassCode(e.target.value)}
               style={{ 
@@ -196,8 +211,18 @@ const CollegeRatingsPage = () => {
                 borderRadius: "4px",
                 fontSize: "1rem"
               }}
-              placeholder="Enter class code"
-            />
+            >
+              <option value="">Select a class code</option>
+              {Object.entries(classOptions).map(([category, codes]) => (
+                <optgroup key={category} label={category}>
+                  {codes.map((code) => (
+                    <option key={code} value={code}>
+                      {code}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
           </div>
           
           <div style={{ marginBottom: "1.2rem" }}>
@@ -246,6 +271,7 @@ const CollegeRatingsPage = () => {
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
+              maxLength={500}
               rows={3}
               style={{ 
                 width: "100%",
