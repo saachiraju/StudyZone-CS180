@@ -66,16 +66,6 @@ export const UserAvatar = () => {
           </div>
           <div className="user-avatar-divider"></div>
           <button
-            onClick={() => {
-              setIsOpen(false);
-              router.push('/saved-quizzes');
-            }}
-            className="user-avatar-menu-item"
-          >
-            View Saved Quizzes
-          </button>
-          <div className="user-avatar-divider"></div>
-          <button
             onClick={handleLogout}
             className="user-avatar-logout"
           >
@@ -203,23 +193,6 @@ export const UserAvatar = () => {
         .user-avatar-logout:hover {
           background-color: #f9fafb;
           color: #1f2937;
-        }
-
-        .user-avatar-menu-item {
-          width: 100%;
-          padding: 15px 20px;
-          border: none;
-          background-color: white;
-          color: #374151;
-          font-size: 14px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          text-align: left;
-        }
-
-        .user-avatar-menu-item:hover {
-          background-color: #f9fafb;
         }
       `}</style>
     </div>
