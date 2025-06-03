@@ -70,9 +70,8 @@ export const Header = () => {
 
               {toolsOpen && (
                 <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg py-2 z-50">
-                  <a href="https://quizlet.com/" className="block px-4 py-2 hover:bg-gray-100">Flashcards</a>
-                  <a href="https://www.youtube.com/" className="block px-4 py-2 hover:bg-gray-100">Videos</a>
-                  <a href="https://libretexts.org/" className="block px-4 py-2 hover:bg-gray-100">Textbooks</a>
+                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">Flashcards</a>
+                  <a href="/practice-tests" className="block px-4 py-2 hover:bg-gray-100">Practice Tests</a>
                 </div>
               )}
             </div>

@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
+import ClassReviews from '@/components/ClassReviews';
 
 function ClassPageCNAS() {
   const params = useParams();
@@ -141,6 +142,9 @@ function ClassPageCNAS() {
               Rate This Course
             </Link>
           </div>
+
+          {/* Add Class Reviews Section */}
+          {courseId && <ClassReviews collegeId="cnas" classCode={courseId} />}
 
           <div className="section">
             <h3 className="section-heading">💬 Class Live Chat</h3>

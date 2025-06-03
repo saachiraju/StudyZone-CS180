@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { getRatings, submitRating } from "../../../dependencies/firebase";
+import { getRatings, submitRating, deleteRating } from "../../../dependencies/firebase";
 import { useAuth } from "../../../dependencies/AuthContext";
-import './styles.css';
 
 // Star rating component
 const StarRating = ({ rating }: { rating: number }) => {
@@ -24,6 +23,22 @@ const StarRating = ({ rating }: { rating: number }) => {
   );
 };
 
+const classOptions = {
+  Biology: ['BIOL100', 'BIOL102', 'BIOL107', 'BIOL005A', 'BIOL005B', 'BIOL005C'],
+  Chemistry: ['CHEM001', 'CHEM001A', 'CHEM001B', 'CHEM001C', 'CHEM112', 'CHEM112A', 'CHEM112B'],
+  Mathematics: ['MATH009A', 'MATH009B', 'MATH009C', 'MATH010A', 'MATH010B', 'MATH046'],
+  Physics: ['PHYS002A', 'PHYS002B', 'PHYS002C', 'PHYS040A', 'PHYS040B', 'PHYS040C'],
+  Statistics: ['STAT155', 'STAT160', 'STAT170'],
+  "Environmental Sciences": ['ENSC001', 'ENSC100', 'ENSC130'],
+  Biochemistry: ['BCH001', 'BCH110A', 'BCH110B'],
+  Neuroscience: ['CBNS101', 'CBNS106', 'CBNS120'],
+  Microbiology: ['MIC100', 'PLPA120'],
+  "Earth Sciences": ['GEO001', 'GEO002', 'GEO100'],
+  Entomology: ['ENT001', 'ENT100', 'ENT120'],
+  Nematology: ['NEM100', 'NEM120', 'NEM130'],
+  Botany: ['BPSC001', 'BPSC100', 'BPSC135'],
+};
+
 const CollegeRatingsPage = () => {
   const { collegeId: paramCollegeId } = useParams<{ collegeId: string }>();
   const collegeId = paramCollegeId || "cnas"; // default to "cnas"
@@ -34,9 +49,11 @@ const CollegeRatingsPage = () => {
   }
 
   type Rating = {
+    id?: string;
     classCode: string;
     rating: number;
     comment?: string;
+    userId?: string;
   };
   
   const [groupedRatings, setGroupedRatings] = useState<Record<string, Rating[]>>({});
@@ -45,6 +62,27 @@ const CollegeRatingsPage = () => {
   const [classCode, setClassCode] = useState("");
   const [rating, setRating] = useState(3);
   const [comment, setComment] = useState("");
+
+  // Content filtering function
+  const containsInappropriateContent = (text: string): boolean => {
+    const inappropriateWords = [
+      'bad word', // Demo case
+      'damn', 'hell', 'crap', 'stupid', 'idiot', 'dumb', 'suck', 'sucks',
+      'hate', 'awful', 'terrible', 'worst', 'garbage', 'trash', 'shit',
+      'fuck', 'bitch', 'ass', 'asshole', 'bastard', 'piss', 'penis',
+      'vagina', 'sex', 'sexy', 'porn', 'nude', 'naked'
+    ];
+    
+    const lowerText = text.toLowerCase();
+    return inappropriateWords.some(word => lowerText.includes(word));
+  };
+
+  // Calculate average rating for a class
+  const calculateAverageRating = (ratings: Rating[]): number => {
+    if (ratings.length === 0) return 0;
+    const sum = ratings.reduce((total, rating) => total + rating.rating, 0);
+    return Math.round((sum / ratings.length) * 10) / 10; // Round to 1 decimal place
+  };
 
   const fetchData = async () => {
     const all = await getRatings(collegeId);
@@ -80,6 +118,11 @@ const CollegeRatingsPage = () => {
       return;
     }
 
+    if (containsInappropriateContent(comment)) {
+      alert("Your comment contains inappropriate content. Please revise your comment.");
+      return;
+    }
+
     await submitRating(collegeId, classCode.toUpperCase(), currentUser.uid, rating, comment);
     setClassCode("");
     setRating(3);
@@ -88,20 +131,38 @@ const CollegeRatingsPage = () => {
     await fetchData(); // refresh list
   };
 
+  const handleDelete = async (ratingId: string) => {
+    if (!currentUser) {
+      alert("Please log in to delete ratings.");
+      return;
+    }
+
+    if (confirm("Are you sure you want to delete this rating?")) {
+      try {
+        await deleteRating(ratingId);
+        await fetchData(); // refresh list
+      } catch (error) {
+        console.error("Error deleting rating:", error);
+        alert("Failed to delete rating. Please try again.");
+      }
+    }
+  };
+
   return (
     <div style={{ 
       padding: "2rem", 
       position: "relative",
-      backgroundColor: "#f8f9fa",
+      background: "linear-gradient(135deg, #87ceeb 0%, #b0e0e6 100%)",
       minHeight: "100vh"
     }}>
       <div style={{
-        backgroundColor: "#0047ab",
+        background: "linear-gradient(135deg, #4682b4 0%, #5f9ea0 100%)",
         padding: "1.5rem",
-        borderRadius: "8px",
+        borderRadius: "12px",
         color: "white",
         marginBottom: "2rem",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 8px 32px rgba(70, 130, 180, 0.3)",
+        border: "2px solid rgba(255, 215, 0, 0.3)",
         position: "relative",
         display: "flex",
         alignItems: "center",
@@ -112,17 +173,30 @@ const CollegeRatingsPage = () => {
           style={{
             position: "absolute",
             left: 24,
-            backgroundColor: "white",
-            color: "#0047ab",
-            border: "none",
-            borderRadius: "6px",
-            padding: "0.5rem 1rem",
+            background: "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)",
+            color: "#2c5282",
+            border: "2px solid transparent",
+            borderRadius: "8px",
+            padding: "0.6rem 1.2rem",
             fontSize: "0.9rem",
             fontWeight: "600",
             textDecoration: "none",
             display: "flex",
             alignItems: "center",
-            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)"
+            boxShadow: "0 4px 15px rgba(255, 215, 0, 0.3)",
+            transition: "all 0.3s ease"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "linear-gradient(135deg, #87ceeb 0%, #b0e0e6 100%)";
+            e.currentTarget.style.color = "white";
+            e.currentTarget.style.borderColor = "#ffd700";
+            e.currentTarget.style.transform = "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)";
+            e.currentTarget.style.color = "#2c5282";
+            e.currentTarget.style.borderColor = "transparent";
+            e.currentTarget.style.transform = "translateY(0)";
           }}
         >
           <span style={{ fontSize: "1.1rem", marginRight: "0.3rem" }}>←</span> Back to Hub
@@ -131,26 +205,39 @@ const CollegeRatingsPage = () => {
           textAlign: "center", 
           margin: 0,
           fontSize: "2.2rem",
-          fontWeight: "600"
+          fontWeight: "600",
+          fontFamily: "'Georgia', serif"
         }}>
-          All Class Ratings in {collegeId}
+          All Class Ratings in {collegeId.toUpperCase()}
         </h1>
         <button
           style={{ 
             position: "absolute",
             right: 24,
-            backgroundColor: "white",
-            color: "#0047ab",
-            border: "none",
-            borderRadius: "6px",
+            background: "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)",
+            color: "#2c5282",
+            border: "2px solid transparent",
+            borderRadius: "8px",
             padding: "0.6rem 1.2rem",
             fontSize: "0.9rem",
             fontWeight: "600",
             cursor: "pointer",
-            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
-            transition: "all 0.2s ease"
+            boxShadow: "0 4px 15px rgba(255, 215, 0, 0.3)",
+            transition: "all 0.3s ease"
           }}
           onClick={() => setShowForm(!showForm)}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "linear-gradient(135deg, #87ceeb 0%, #b0e0e6 100%)";
+            e.currentTarget.style.color = "white";
+            e.currentTarget.style.borderColor = "#ffd700";
+            e.currentTarget.style.transform = "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)";
+            e.currentTarget.style.color = "#2c5282";
+            e.currentTarget.style.borderColor = "transparent";
+            e.currentTarget.style.transform = "translateY(0)";
+          }}
         >
           {showForm ? "Cancel" : "Add Rating"}
         </button>
@@ -159,19 +246,22 @@ const CollegeRatingsPage = () => {
       {showForm && (
         <div style={{ 
           margin: "0 auto 2rem auto", 
-          backgroundColor: "white",
-          border: "1px solid #e1e4e8",
-          borderRadius: "8px",
+          background: "rgba(255, 255, 255, 0.95)",
+          border: "2px solid rgba(255, 215, 0, 0.3)",
+          borderRadius: "12px",
           padding: "1.5rem",
           maxWidth: "500px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)"
+          boxShadow: "0 8px 32px rgba(70, 130, 180, 0.3)",
+          backdropFilter: "blur(10px)"
         }}>
           <h3 style={{ 
-            color: "#0047ab", 
+            color: "#2c5282", 
             marginTop: 0, 
             marginBottom: "1.5rem",
-            borderBottom: "2px solid #0047ab",
-            paddingBottom: "0.5rem"
+            borderBottom: "2px solid #ffd700",
+            paddingBottom: "0.5rem",
+            fontFamily: "'Georgia', serif",
+            fontWeight: "600"
           }}>
             Submit a New Rating
           </h3>
@@ -185,8 +275,7 @@ const CollegeRatingsPage = () => {
             }}>
               Class Code (e.g. CS180):
             </label>
-            <input
-              type="text"
+            <select
               value={classCode}
               onChange={(e) => setClassCode(e.target.value)}
               style={{ 
@@ -196,8 +285,18 @@ const CollegeRatingsPage = () => {
                 borderRadius: "4px",
                 fontSize: "1rem"
               }}
-              placeholder="Enter class code"
-            />
+            >
+              <option value="">Select a class code</option>
+              {Object.entries(classOptions).map(([category, codes]) => (
+                <optgroup key={category} label={category}>
+                  {codes.map((code) => (
+                    <option key={code} value={code}>
+                      {code}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
           </div>
           
           <div style={{ marginBottom: "1.2rem" }}>
@@ -246,6 +345,7 @@ const CollegeRatingsPage = () => {
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
+              maxLength={500}
               rows={3}
               style={{ 
                 width: "100%",
@@ -313,7 +413,9 @@ const CollegeRatingsPage = () => {
               borderTopLeftRadius: "8px",
               borderTopRightRadius: "8px"
             }}>
-              <h2 style={{ margin: 0, fontSize: "1.5rem" }}>{classCode}</h2>
+              <h2 style={{ margin: 0, fontSize: "1.5rem" }}>
+                {classCode} ({calculateAverageRating(ratings)}/5)
+              </h2>
             </div>
             
             <table style={{
@@ -355,9 +457,57 @@ const CollegeRatingsPage = () => {
                     <td style={{
                       padding: "1rem",
                       borderBottom: "1px solid #e1e4e8",
-                      color: "#333"
+                      color: "#333",
+                      position: "relative"
                     }}>
-                      {r.comment || "—"}
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                        <div style={{ flex: 1 }}>
+                          {currentUser && r.userId === currentUser.uid && (
+                            <div style={{
+                              background: "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)",
+                              color: "#2c5282",
+                              fontSize: "0.75rem",
+                              fontWeight: "600",
+                              padding: "0.25rem 0.5rem",
+                              borderRadius: "12px",
+                              marginBottom: "0.5rem",
+                              display: "inline-block",
+                              boxShadow: "0 2px 8px rgba(255, 215, 0, 0.3)"
+                            }}>
+                              Your Review
+                            </div>
+                          )}
+                          <div>{r.comment || "—"}</div>
+                        </div>
+                        {currentUser && r.userId === currentUser.uid && r.id && (
+                          <button
+                            onClick={() => handleDelete(r.id!)}
+                            style={{
+                              background: "linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)",
+                              color: "white",
+                              border: "none",
+                              borderRadius: "6px",
+                              padding: "0.4rem 0.8rem",
+                              fontSize: "0.8rem",
+                              fontWeight: "600",
+                              cursor: "pointer",
+                              marginLeft: "1rem",
+                              boxShadow: "0 2px 8px rgba(255, 107, 107, 0.3)",
+                              transition: "all 0.3s ease"
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background = "linear-gradient(135deg, #ff5252 0%, #d32f2f 100%)";
+                              e.currentTarget.style.transform = "translateY(-1px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.background = "linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)";
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                          >
+                            Delete
+                          </button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}

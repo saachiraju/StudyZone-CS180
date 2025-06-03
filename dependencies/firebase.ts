@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 import {
   getFirestore,
   doc,
@@ -8,12 +9,16 @@ import {
   getDocs,
   query,
   where,
+  orderBy,
   serverTimestamp,
-  DocumentData,
+  Timestamp,
+  getDoc,
+  addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
-// Define the type for a rating
 export type RatingEntry = {
+  id?: string;
   collegeId: string;
   classCode: string;
   userId: string;
@@ -21,7 +26,7 @@ export type RatingEntry = {
   comment: string;
   timestamp?: any;
 };
-
+// Test commit
 const firebaseConfig = {
   apiKey: "AIzaSyBiTLsjbj2Ba3kw8JBGKxxXw_NK6rU9m5k",
   authDomain: "studyzone-3b8dd.firebaseapp.com",
@@ -36,8 +41,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-// Submit a new rating
 const submitRating = async (
   collegeId: string,
   classCode: string,
@@ -56,10 +61,9 @@ const submitRating = async (
   });
 };
 
-// Get all ratings for a class
 const getRatings = async (
   collegeId: string,
-  classCode?: string // Make classCode optional
+  classCode?: string
 ): Promise<RatingEntry[]> => {
   if (!collegeId) throw new Error("collegeId is required");
 
@@ -70,9 +74,61 @@ const getRatings = async (
 
   const q = query(collection(db, "ratings"), ...baseQuery);
   const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => doc.data() as RatingEntry);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as RatingEntry));
 };
 
+const deleteRating = async (ratingId: string): Promise<void> => {
+  const ratingRef = doc(db, "ratings", ratingId);
+  await deleteDoc(ratingRef);
+};
 
-export { auth, googleProvider, submitRating, getRatings };
+const addPost = async (title: string, body: string, uid: string) => {
+  await addDoc(collection(db, "posts"), {
+    title,
+    body,
+    author: uid,
+    createdAt: Timestamp.now()
+  });
+};
+
+const getPosts = async () => {
+  const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+const getPostById = async (id: string) => {
+  const docRef = doc(db, "posts", id);
+  const docSnap = await getDoc(docRef);
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+};
+
+const addComment = async (postId: string, body: string, uid: string) => {
+  await addDoc(collection(db, `posts/${postId}/comments`), {
+    body,
+    author: uid,
+    createdAt: Timestamp.now()
+  });
+};
+
+const getComments = async (postId: string) => {
+  const q = query(collection(db, `posts/${postId}/comments`), orderBy("createdAt"));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+export {
+  auth,
+  googleProvider,
+  submitRating,
+  getRatings,
+  deleteRating,
+  storage,
+  addPost,
+  getPosts,
+  getPostById,
+  addComment,
+  getComments
+};
+
 export default app;

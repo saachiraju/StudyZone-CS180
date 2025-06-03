@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
 import { Header } from '@/sections/Header';
+import ClassReviews from '@/components/ClassReviews';
 
 function ClassPageBCOE() {
   const params = useParams();
@@ -149,6 +150,9 @@ function ClassPageBCOE() {
               Rate This Course
             </Link>
           </div>
+
+          {/* Add Class Reviews Section */}
+          {courseId && <ClassReviews collegeId="bcoe" classCode={courseId} />}
 
           <div className="section">
             <h3 className="section-heading">💬 Join This Quarter's Discord</h3>

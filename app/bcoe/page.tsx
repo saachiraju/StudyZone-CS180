@@ -45,28 +45,47 @@ function BCOE() {
         <p>Welcome to the BCOE study resources page.</p>
         <p>Here you'll find resources for engineering students.</p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
-          <input
-            type="text"
-            placeholder="Search classes (e.g., CS153)"
-            className="class-search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "6px",
-              border: "1px solid #ccc",
-              maxWidth: "400px"
-            }}
-          />
-
+        <div style={{ marginBottom: "1.5rem" }}>
           <Link
-            href="/bcoe/ratings"
+            href="/board"
             className="class-card"
-            style={{ maxWidth: "fit-content" }}
+            style={{
+              backgroundColor: "#0047ab",
+              color: "white",
+              padding: "0.6rem 1.2rem",
+              borderRadius: "6px",
+              fontWeight: "600",
+              display: "inline-block",
+              textDecoration: "none",
+              marginBottom: "1rem"
+            }}
           >
-            View All BCOE Class Ratings
+            🗨️ Visit the Discussion Board - In Progress
           </Link>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <input
+              type="text"
+              placeholder="Search classes (e.g., CS153)"
+              className="class-search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{
+                padding: "0.5rem 1rem",
+                borderRadius: "6px",
+                border: "1px solid #ccc",
+                maxWidth: "400px"
+              }}
+            />
+
+            <Link
+              href="/bcoe/ratings"
+              className="class-card"
+              style={{ maxWidth: "fit-content" }}
+            >
+              View All BCOE Class Ratings
+            </Link>
+          </div>
         </div>
 
         {Object.entries(groupedClasses).map(([department, classes]) => {
@@ -84,7 +103,6 @@ function BCOE() {
 
               <div className="class-grid">
                 {filtered.map((course) => (
-
                   <Link
                     key={course}
                     href={`/classpages/bcoe/${course}`}
