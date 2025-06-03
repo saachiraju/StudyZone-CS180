@@ -93,7 +93,10 @@ export default function Uploader({ folder }: Props) {
 
   function handleFileChange(file: File) {
     toast.dismiss()
-
+    if (file.size === 0) {
+      toast.error('File is empty')
+      return
+    }
     if (file.size / 1024 / 1024 > 50) {
       toast.error('File size too big (max 50MB)')
       return
