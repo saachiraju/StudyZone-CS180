@@ -14,9 +14,11 @@ import {
   Timestamp,
   getDoc,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export type RatingEntry = {
+  id?: string;
   collegeId: string;
   classCode: string;
   userId: string;
@@ -72,7 +74,12 @@ const getRatings = async (
 
   const q = query(collection(db, "ratings"), ...baseQuery);
   const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => doc.data() as RatingEntry);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as RatingEntry));
+};
+
+const deleteRating = async (ratingId: string): Promise<void> => {
+  const ratingRef = doc(db, "ratings", ratingId);
+  await deleteDoc(ratingRef);
 };
 
 const addPost = async (title: string, body: string, uid: string) => {
@@ -115,6 +122,7 @@ export {
   googleProvider,
   submitRating,
   getRatings,
+  deleteRating,
   storage,
   addPost,
   getPosts,
