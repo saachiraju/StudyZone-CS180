@@ -3,7 +3,6 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
-import { Header } from '@/sections/Header';
 import ClassReviews from '@/components/ClassReviews';
 
 function ClassPageBCOE() {

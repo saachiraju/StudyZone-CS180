@@ -1,4 +1,3 @@
-import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { Function } from "@/sections/Function"
 import Uploader from "@/components/uploader";
@@ -6,7 +5,6 @@ import { FlashcardCarousel } from "@/sections/Flashcards";
 export default function Home() {
   return (
     <>
-    <Header/>
     <Hero />  
     <FlashcardCarousel/>
     {/* <Uploader/> */}

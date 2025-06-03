@@ -7,7 +7,6 @@ import './styles.css';
 import UploaderComponent from '@/components/uploader';
 import { Toaster } from '@/components/toaster';
 import { useParams } from 'next/navigation';
-import { Header } from '@/sections/Header';
 
 type ImageEntry = {
   label: string;

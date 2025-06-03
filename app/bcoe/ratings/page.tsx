@@ -1,6 +1,5 @@
 'use client';
 
-import { Header } from '@/sections/Header';
 import React, { useEffect, useState } from "react";
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
