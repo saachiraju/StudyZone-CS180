@@ -24,7 +24,7 @@ export type RatingEntry = {
   comment: string;
   timestamp?: any;
 };
-
+// Test commit
 const firebaseConfig = {
   apiKey: "AIzaSyBiTLsjbj2Ba3kw8JBGKxxXw_NK6rU9m5k",
   authDomain: "studyzone-3b8dd.firebaseapp.com",
