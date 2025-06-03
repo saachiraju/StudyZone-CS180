@@ -190,6 +190,7 @@ export default function Uploader({ folder }: Props) {
             name="file"
             type="file"
             className="sr-only"
+            aria-label="Photo upload"
             onChange={(event) => {
               const file = event.currentTarget?.files?.[0]
               if (file) {
