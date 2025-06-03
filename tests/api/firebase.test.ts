@@ -39,7 +39,7 @@ import {
       docs: [
         {
           data: () => ({
-            collegeId: 'UCLA',
+            collegeId: 'BCOE',
             classCode: 'CS180',
             userId: 'user123',
             rating: 5,
@@ -57,10 +57,10 @@ import {
     })
   
     it('submits a rating to Firestore', async () => {
-      await submitRating('UCLA', 'CS180', 'user123', 5, 'Great class!')
+      await submitRating('BCOE', 'CS180', 'user123', 5, 'Great class!')
       expect(collection).toHaveBeenCalledWith(expect.anything(), 'ratings')
       expect(setDoc).toHaveBeenCalledWith(mockDocRef, {
-        collegeId: 'UCLA',
+        collegeId: 'BCOE',
         classCode: 'CS180',
         userId: 'user123',
         rating: 5,
@@ -72,14 +72,14 @@ import {
     it('retrieves ratings for a specific class', async () => {
       ;(getDocs as jest.Mock).mockResolvedValue(mockSnapshot)
   
-      const result = await getRatings('UCLA', 'CS180')
+      const result = await getRatings('BCOE', 'CS180')
       expect(collection).toHaveBeenCalledWith(expect.anything(), 'ratings')
-      expect(where).toHaveBeenCalledWith('collegeId', '==', 'UCLA')
+      expect(where).toHaveBeenCalledWith('collegeId', '==', 'BCOE')
       expect(where).toHaveBeenCalledWith('classCode', '==', 'CS180')
       expect(getDocs).toHaveBeenCalled()
       expect(result).toEqual([
         {
-          collegeId: 'UCLA',
+          collegeId: 'BCOE',
           classCode: 'CS180',
           userId: 'user123',
           rating: 5,
