@@ -60,7 +60,7 @@ function BCOE() {
               marginBottom: "1rem"
             }}
           >
-            🗨️ Visit the Discussion Board - In Progress
+            🗨️ Visit the Discussion Board
           </Link>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
