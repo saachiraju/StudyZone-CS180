@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 import {
   getFirestore,
   doc,
@@ -36,6 +37,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 // Submit a new rating
 const submitRating = async (
@@ -74,5 +76,5 @@ const getRatings = async (
 };
 
 
-export { auth, googleProvider, submitRating, getRatings };
+export { auth, googleProvider, submitRating, getRatings, storage };
 export default app;
