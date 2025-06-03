@@ -36,9 +36,11 @@
     ".next/types/**/*.ts",
     "lib/seed.ts",
     "dependencies/firebase.ts",
-    "app/bcoe/ratings/page.tsx"
+    "app/bcoe/ratings/page.tsx",
+    "tests"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "types": ["jest", "node"],
 }

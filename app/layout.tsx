@@ -6,8 +6,8 @@ import { DM_Sans } from "next/font/google";
 import { Header } from '@/sections/Header';
 
 export const metadata = {
-  title: 'Vercel Blob Starter',
-  description: 'A simple Next.js app with Vercel Blob for image uploads',
+  title: 'StudyZone',
+  description: 'Study',
 }
 const dmSans = DM_Sans({ subsets: ["latin"] });
 const inter = Inter({
