@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import '@/styles/Pages.css';
+import PostBoard from '@/app/board/page';
 
 function CNAS() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,15 +51,43 @@ function CNAS() {
               maxWidth: "400px"
             }}
           />
+         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+  <Link
+    href="/cnas/ratings"
+    className="class-card"
+    style={{
+      maxWidth: "fit-content",
+      textAlign: "center"
+    }}
+  >
+    View All CNAS Class Ratings
+  </Link>
 
-          <Link
-            href="/cnas/ratings"
-            className="class-card"
-            style={{ maxWidth: "fit-content" }}
-          >
-            View All CNAS Class Ratings
-          </Link>
-        </div>
+  <Link
+    href="/board"
+    className="class-card"
+    style={{
+      maxWidth: 'fit-content',
+      padding: '0.75rem 1.25rem',
+      borderRadius: '8px',
+      background: 'linear-gradient(to right, #4A90E2, #50E3C2)',
+      color: 'white',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+    }}
+  >
+    📚 Visit the Discussion Board
+  </Link>
+</div>
+
+
+
+
+  
+</div>
+
+
 
         {Object.entries(groupedClasses).map(([department, classes]) => {
           const filtered = classes.filter(course =>
@@ -80,6 +109,7 @@ function CNAS() {
                     {course}
                   </Link>
                 ))}
+
               </div>
             </div>
           );
