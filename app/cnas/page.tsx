@@ -22,6 +22,7 @@ function CNAS() {
     Entomology: ['ENT001', 'ENT100', 'ENT120'],
     Nematology: ['NEM100', 'NEM120', 'NEM130'],
     Botany: ['BPSC001', 'BPSC100', 'BPSC135'],
+    
   };
 
   return (

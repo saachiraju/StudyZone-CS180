@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getPostById, getComments, addComment } from '@/dependencies/firebase';
 import { useAuth } from '@/dependencies/AuthContext';
 
+
 const PostDetailPage = () => {
   const { postId } = useParams();
   const { currentUser } = useAuth();
@@ -36,6 +37,7 @@ const PostDetailPage = () => {
   return (
     <div className="p-8 max-w-3xl mx-auto">
       <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+      <p className="text-sm text-gray-500 mb-1">Class: {post.classCode}</p>
 <p className="text-sm text-gray-500 mb-1">
   Posted by: {post.authorName || 'Unknown'}
 </p>

@@ -87,7 +87,8 @@ const addPost = async (
   body: string,
   uid: string,
   displayName: string,
-  anonymous: boolean
+  anonymous: boolean,
+  classCode?: string // optional
 ) => {
   await addDoc(collection(db, "posts"), {
     title,
@@ -95,6 +96,7 @@ const addPost = async (
     author: uid,
     authorName: anonymous ? 'Anonymous' : displayName,
     anonymous,
+    classCode: classCode || null, // allow null if not provided
     createdAt: Timestamp.now()
   });
 };

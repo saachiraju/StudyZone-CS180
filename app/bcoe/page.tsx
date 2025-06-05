@@ -24,7 +24,8 @@ function BCOE() {
       'ENVE100', 'ENVE110', 'ENVE130'
     ],
     'Bioengineering': ['BIME050', 'BIME110', 'BIME116', 'BIME120'],
-    'General Engineering': ['ENGR001', 'ENGR154']
+    'General Engineering': ['ENGR001', 'ENGR154'],
+    
   };
 
   return (
