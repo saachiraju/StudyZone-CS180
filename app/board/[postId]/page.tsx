@@ -36,7 +36,10 @@ const PostDetailPage = () => {
   return (
     <div className="p-8 max-w-3xl mx-auto">
       <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-      <p className="mb-6">{post.body}</p>
+<p className="text-sm text-gray-500 mb-1">
+  Posted by: {post.authorName || 'Unknown'}
+</p>
+<p className="mb-6">{post.body}</p>
 
       <div className="mb-6">
         <textarea

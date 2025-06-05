@@ -82,11 +82,19 @@ const deleteRating = async (ratingId: string): Promise<void> => {
   await deleteDoc(ratingRef);
 };
 
-const addPost = async (title: string, body: string, uid: string) => {
+const addPost = async (
+  title: string,
+  body: string,
+  uid: string,
+  displayName: string,
+  anonymous: boolean
+) => {
   await addDoc(collection(db, "posts"), {
     title,
     body,
     author: uid,
+    authorName: anonymous ? 'Anonymous' : displayName,
+    anonymous,
     createdAt: Timestamp.now()
   });
 };
