@@ -61,6 +61,14 @@ const submitRating = async (
   });
 };
 
+const deletePost = async (postId: string): Promise<void> => {
+  await deleteDoc(doc(db, "posts", postId));
+};
+
+const deleteComment = async (postId: string, commentId: string): Promise<void> => {
+  await deleteDoc(doc(db, `posts/${postId}/comments/${commentId}`));
+};
+
 const getRatings = async (
   collegeId: string,
   classCode?: string
@@ -138,7 +146,9 @@ export {
   getPosts,
   getPostById,
   addComment,
-  getComments
+  getComments,
+  deletePost,
+  deleteComment
 };
 
 export default app;
