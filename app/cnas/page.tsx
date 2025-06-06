@@ -61,7 +61,7 @@ function CNAS() {
       textAlign: "center"
     }}
   >
-    View All CNAS Class Ratings
+   ⭐ View All CNAS Class Ratings
   </Link>
 
   <Link
@@ -83,9 +83,6 @@ function CNAS() {
 </div>
 
 
-
-
-  
 </div>
 
 

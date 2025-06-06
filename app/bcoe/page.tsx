@@ -43,26 +43,6 @@ function BCOE() {
       </div>
 
       <div className="page-content">
-        <p>Welcome to the BCOE study resources page.</p>
-        <p>Here you'll find resources for engineering students.</p>
-
-        <div style={{ marginBottom: "1.5rem" }}>
-          <Link
-            href="/board"
-            className="class-card"
-            style={{
-              backgroundColor: "#0047ab",
-              color: "white",
-              padding: "0.6rem 1.2rem",
-              borderRadius: "6px",
-              fontWeight: "600",
-              display: "inline-block",
-              textDecoration: "none",
-              marginBottom: "1rem"
-            }}
-          >
-            🗨️ Visit the Discussion Board
-          </Link>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <input
@@ -79,13 +59,32 @@ function BCOE() {
               }}
             />
 
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+
             <Link
               href="/bcoe/ratings"
               className="class-card"
-              style={{ maxWidth: "fit-content" }}
+              style={{ maxWidth: "fit-content" ,  textAlign: "center"}}
             >
-              View All BCOE Class Ratings
+             ⭐ View All BCOE Class Ratings
             </Link>
+
+          <Link
+            href="/board"
+            className="class-card"
+            style={{
+              backgroundColor: "#0047ab",
+              color: "white",
+              padding: "0.6rem 1.2rem",
+              borderRadius: "6px",
+              fontWeight: "600",
+              display: "inline-block",
+              textDecoration: "none",
+              marginBottom: "1rem"
+            }}
+          >
+            📚 Visit the Discussion Board
+          </Link>
           </div>
         </div>
 
