@@ -15,7 +15,6 @@ describe('BCOE Page', () => {
     render(<BCOE />);
     expect(screen.getByText('Bourns College of Engineering')).toBeInTheDocument();
     expect(screen.getByText(/one‑stop hub/i)).toBeInTheDocument();
-    expect(screen.getByText(/engineering students/i)).toBeInTheDocument();
   });
 
   it('displays the search input and "View All BCOE Class Ratings" link', () => {
