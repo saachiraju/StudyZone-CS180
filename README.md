@@ -12,6 +12,6 @@ StudyZone Features:
 
 **Discussion Board:** Interact with other students in the class
 
-**Practice Test Generator:** Allows them to create practice tests to review class content 
+**Practice Test Generator:** Allows users to create AI-generated practice tests to review class content 
 
 
