@@ -146,12 +146,7 @@ function ClassPageCNAS() {
           {/* Add Class Reviews Section */}
           {courseId && <ClassReviews collegeId="cnas" classCode={courseId} />}
 
-          <div className="section">
-            <h3 className="section-heading">💬 Class Live Chat</h3>
-            <Link href={`/chat/${courseId}`} className="blue-button">
-              Open Class Chat
-            </Link>
-          </div>
+  
 
           <div className="section">
             <h3 className="section-heading">📚 Course Resources</h3>

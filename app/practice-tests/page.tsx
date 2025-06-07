@@ -398,7 +398,7 @@ function PracticeTests() {
 
             {/* File Upload */}
             <div style={{ marginBottom: '30px' }}>
-              <label style={{ 
+            <label htmlFor="pdf-upload" style={{ 
                 display: 'block', 
                 marginBottom: '12px', 
                 color: '#4682b4', 
@@ -408,6 +408,7 @@ function PracticeTests() {
                 📄 Upload PDF Document *
               </label>
               <input
+                id="pdf-upload"
                 type="file"
                 accept=".pdf"
                 onChange={handleFileUpload}
