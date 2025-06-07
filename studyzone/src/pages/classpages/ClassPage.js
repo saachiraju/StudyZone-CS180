@@ -99,13 +99,6 @@ function ClassPage() {
       </Link>
     </div>
 
-    {/* 💬 Class Live Chat */}
-    <div className="section">
-      <h3 className="section-heading">💬 Class Live Chat</h3>
-      <Link to={`/chat/${courseId}`} className="blue-button">
-        Open Class Chat
-      </Link>
-    </div>
 
     {/* 💬 Discord Server */}
     <div className="section">
