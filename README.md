@@ -1,6 +1,5 @@
-# Vercel Blob Next.js Starter
+# StudyZone
 
-A Next.js template that uses [Vercel Blob](https://vercel.com/blob) for image uploads and storage.
+StudyZone is an all-in-one website platform where UCR students have access to a variety of academic resources. The features of the website include a College Hubs page to have access to BCOE or CNAS resources, accessing or uploading study resources, submitting or viewing course ratings, creating practice tests, and interacting with other classmates through an interactive discussion board. 
 
-To run "npm run dev"
 
